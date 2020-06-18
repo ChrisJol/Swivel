@@ -3,23 +3,51 @@
     <head>
         <title>Swivel</title>
         <meta name="viewport" content="width=device-width, height=device-height">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200&family=Lato:wght@100&family=Work+Sans:wght@200&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Halant:wght@700&display=swap" rel="stylesheet">
+        <link rel='stylesheet' href='animation.css'>
         <link rel='stylesheet' href='styles.css'>
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header>
-            <nav>
-                <a href="">link 1</a>
-                <a href="">link 2</a>
-                <a href="">link 3</a>
-                <a href="">link 4</a>
-                <div class="btn">Contact Me</div>
-            </nav>
-            <!-- <div class="image"></div> -->
-            <h1>Swivel</h1>
-        </header>
-        <div class="page1">
-            <h2>Lorem Ipsum</h2>
+        <div id="wrapper">
+            <header>
+                <img id="noise" src="img/noise.png">
+                <div id="head_images">
+                    <img id="glasses" class="head_image" src="img/Glasses.png">
+                    <img id="keyboard" class="head_image" src="img/Keyboard.png">
+                    <img id="planner" class="head_image" src="img/Planner.png">
+                </div>
+                <div id="head_text">
+                    <h2 id="head_text_2" title="Welcome to">Welcome to</h2>
+                    <h1 id="head_text_1" title="SWIVEL">SWIVEL</h1>
+                </div>
+                <div class="layer0">
+                    <div id="swivel_group">
+                        <img id="s4" class="swivels" src="img/swivels/slice4.png">
+                        <img id="s1" class="swivels" src="img/swivels/slice1.png">
+                    </div>
+                    <img id="s3" class="swivels" src="img/swivels/slice3.png">
+                </div>
+                <div class="layer1">
+                    <img id="s2" class="swivels" src="img/swivels/slice2.png">
+                </div>
+                <div class="layer2">
+                    <img id="s5" class="swivels" src="img/swivels/slice5.png">
+                </div>
+            </header>
+            <div id="about_page">
+                <img id="about_page_image" src="img/stock/stock1.jpg">
+                <div id="about_page_text">
+                    <h1>Why a Virtual Assistant?</h1>
+                    <p>Our ultimate goal is to free our clients from unnecessary tasks so they can focus on growing their business. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu lorem lobortis, pharetra quam non, maximus mi. Morbi egestas lacus sagittis risus hendrerit ultrices. Aliquam sit amet dui vitae turpis venenatis convallis sed luctus est. Proin tempus, massa sit amet dignissim interdum, ante leo dapibus diam, eu dignissim erat metus quis libero.</p>
+                </div>
+            </div>
+            <div id="stickies_page">
+                
+            </div>
         </div>
     </body>
+    <script src="functions.js"></script>
+    <script src="script.js"></script>
 </html>
