@@ -21,6 +21,9 @@ body{
 
     padding: 0;
     margin: 0;
+
+    background: rgb(255,255,255);
+    /* background: linear-gradient(150deg, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 100%); */
 }
 
 .wrapper{
@@ -82,6 +85,8 @@ header{
     font-family: var(--secondary-font);
 
     width: 100%;
+    opacity: 0;
+    transition: 1s;
 }
 
 #head_text_2{

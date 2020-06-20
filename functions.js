@@ -29,12 +29,6 @@ function animateHeaderImage(imageList, index){
             animateHeaderImage(imageList, index + 1)
         }, 200)   
     }
-
-}
-
-function bezier(t){
-    let p = (3 * Math.pow(1-t, 2) * t) + (3 * (1 - t) * Math.pow(t, 2)) + (Math.pow(t, 3))
-    return p
 }
 
 function animateSwivel(swivelList, index){
@@ -53,5 +47,25 @@ function animateSwivel(swivelList, index){
         setTimeout(function(){
             animateSwivel(swivelList, index + 1)
         }, 300)
+    }
+}
+
+function animateText(text, index){
+    let letter = text[index]
+    let headText2 = document.querySelector("#head_text_2")
+    let headText1 = document.querySelector("#head_text_1")
+
+    if(index < text.length)
+    {
+        setTimeout(function(){
+            headText2.textContent += letter
+            animateText(text, index + 1)
+        }, 100)
+    }
+    else
+    {
+        setTimeout(function(){
+            headText1.style.opacity = 1;
+        }, 500)
     }
 }
