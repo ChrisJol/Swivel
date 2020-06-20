@@ -1,16 +1,35 @@
-function animateHeaderImage({image, timing, duration}){
-    let start = performance.now();
+function animateHeaderImage(imageList, index){
+    if(index < imageList.length)
+    {
+        let image = imageList[index]
 
-    requestAnimationFrame(function animateHeaderImage(time){
-        let timeFraction = (time - start) / duration;
-        let progress = timing(timeFraction)
+        image.classList.add("head_image_intro")
+        setTimeout(function(){
+            image.style.transform = 'translateX(0)'
+            image.style.opacity = 1;
+            image.classList.remove("head_image_intro")
 
-        progress = ((progress * 1000) - 1000)
-        image.style.transform = `translateX(${progress}px)`
+            switch(image.id)
+            {
+                case "glasses": 
+                    image.style.animationDuration = "3s"
+                    break
+                case "keyboard":
+                    image.style.animationDuration = "4s"
+                    break
+                case "planner":
+                    image.style.animationDuration = "3.5s"
+                    break
+            }
 
-        if(timeFraction > 1) image.classList.add("head_image_animation")
-        else requestAnimationFrame(animateHeaderImage);
-    })
+            image.classList.add("head_image_animation")
+        }, 750)
+
+        setTimeout(function(){
+            animateHeaderImage(imageList, index + 1)
+        }, 200)   
+    }
+
 }
 
 function bezier(t){
@@ -18,14 +37,21 @@ function bezier(t){
     return p
 }
 
-function animateSwivel({swivel, duration}){
-    let start = performance.now();
+function animateSwivel(swivelList, index){
+    let swivel = swivelList[index]
 
-    requestAnimationFrame(function animateSwivel(time){
-        let timeFraction = (time - start) / duration;
-        
-        swivel.style.opacity = timeFraction;
+    if(index < swivelList.length)
+    {
+        swivel.classList.add("swivel_intro")
+        setTimeout(function(){
+            swivel.classList.remove("swivel_intro")
+            swivel.style.opacity = 1
+            swivel.classList.add("swivel_animation")
+            if(swivel.id == "s4") swivel.style.animationDirection = "reverse"
+        }, 1000)
 
-        if(timeFraction <= 1) requestAnimationFrame(animateSwivel);
-    })
+        setTimeout(function(){
+            animateSwivel(swivelList, index + 1)
+        }, 300)
+    }
 }

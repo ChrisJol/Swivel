@@ -4,29 +4,7 @@ let keyboard = document.querySelector("#keyboard")
 let planner = document.querySelector("#planner")
 
 let swivelList = document.querySelectorAll(".swivels")
+let imageList = document.querySelectorAll(".head_image")
+animateSwivel(swivelList, 0)
+animateHeaderImage(imageList, 0)
 
-animateHeaderImage({
-    image: glasses,
-    timing: bezier,
-    duration: 1000
-})
-
-animateHeaderImage({
-    image: keyboard,
-    timing: bezier,
-    duration: 1200
-})
-
-animateHeaderImage({
-    image: planner,
-    timing: bezier,
-    duration: 800
-})
-
-console.log(swivelList)
-for(let i = 0; i < swivelList.length; i++){
-    animateSwivel({
-        swivel: swivelList[i],
-        duration: 800
-    })
-}
