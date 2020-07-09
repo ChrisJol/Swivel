@@ -1,0 +1,172 @@
+/* TABLE OF CONTENTS (line numbers may be inaccurate)
+ *
+ * SPLASH PAGE...................... 60
+ *      hamburger menu
+ *
+ * ABOUT PAGE....................... 99
+ *      hamburger menu
+ *      nav
+ *
+ *
+ *
+ *
+ */
+
+:root{
+    --blue: #537590;
+    --blue_transparent: rgba(83,117,144,.8);
+    --green: #81A899;
+    --yellow: #E6A53E;
+
+    --header_font: "Halant";
+    --subheader_font: "Halant-light";
+    --body_font: "Josefin-sans-medium";
+    --light_font: "Josefin-sans-light";
+}
+
+@font-face{
+    font-family: "Halant";
+    src: url(../font/Halant-Regular.ttf);
+}
+@font-face{
+    font-family: "Halant-light";
+    src: url(../font/Halant-Light.ttf);
+}
+@font-face{
+    font-family: "Josefin-sans-light";
+    src: url(../font/JosefinSans-VariableFont_wght.ttf);
+    font-weight: 100;
+}
+@font-face{
+    font-family: "Josefin-sans-medium";
+    src: url(../font/JosefinSans-VariableFont_wght.ttf);
+    font-wieght: 200;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.page{
+    width: 100%;
+    min-height: 500px;
+
+    box-shadow: 0px 3px 13px 2px rgba(0,0,0,0.2);
+}
+
+/******************************************************* SPLASH PAGE */
+.splash{
+    height: 100vh;
+    background: url(../img/splash_mobile.jpg);
+    background-size: cover;
+    background-position: center;
+
+    z-index: 1000;
+}
+
+.hamburger_menu{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 1.75rem;
+    height: 1.75rem;
+}
+.line{
+    width: 100%;
+    height: .25rem;
+
+    border-radius: 5px;
+    background-color: white;
+}
+
+.welcome_box{
+    display: grid;
+    grid-template-columns: 80%;
+    grid-template-rows: 20% 35% 15%;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    height: 100%;
+
+    background-color: var(--blue_transparent);
+
+    text-align: center;
+    color: white;
+}
+.welcome_header{
+    border-bottom: 1.5px solid white;
+    padding: 0 1rem;
+}
+.welcome_header h1{
+    font-family: var(--header_font);
+    font-size: 4.5rem;
+    line-height: 5rem;
+    letter-spacing: .2rem;
+
+    margin: 0;
+}
+.welcome_header h2{
+    font-family: var(--light_font);
+    font-size: 2rem;
+
+    margin: 0;
+}
+.welcome_text{
+    font-family: var(--body_font);
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+.welcome_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    max-height: 3.5rem;
+    max-width: 16rem;
+
+    background-color: var(--yellow);
+    border-radius: 3px;
+
+    font-family: var(--subheader_font);
+    font-size: 1.5rem;
+}
+
+/******************************************************* ABOUT PAGE */
+
+.about{
+    position: relative;
+    background-color: var(--green);
+    z-index: 900;
+}
+
+/*------------------------------------- <NAV> */
+nav{
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    padding: 1rem 0;
+    width: 100%;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+}
+nav a:visited{
+    color: black;
+}
+/*------------------------------------- </NAV> */
