@@ -1,27 +1,39 @@
 /* TABLE OF CONTENTS (line numbers may be inaccurate)
  *
- * SPLASH PAGE...................... 60
+ * DEFAULT STYLES................... 61
+ *
+ * SPLASH PAGE...................... 98
  *      hamburger menu
  *
- * ABOUT PAGE....................... 99
+ * ABOUT PAGE....................... 162
  *      hamburger menu
  *      nav
  *
- *
+ * OVERRIDES........................ 307
  *
  *
  */
+
+ *{
+     box-sizing: border-box;
+ }
 
 :root{
     --blue: #537590;
     --blue_transparent: rgba(83,117,144,.8);
     --green: #81A899;
     --yellow: #E6A53E;
+    --white: rgba(242,242,242,1);
+    --grey: rgb(82, 82, 82);
 
     --header_font: "Halant";
     --subheader_font: "Halant-light";
     --body_font: "Josefin-sans-medium";
     --light_font: "Josefin-sans-light";
+
+    --header_font_size: 4rem;
+    --subheader_font_size: 2rem;
+    --body_font_size: 1.1rem;
 }
 
 @font-face{
@@ -48,98 +60,112 @@ body{
     padding: 0;
 }
 
+/******************************************************* DEFAULT STYLES */
 .page{
     width: 100%;
-    min-height: 500px;
 
-    box-shadow: 0px 3px 13px 2px rgba(0,0,0,0.2);
+    box-shadow: 0px 7px 13px -6px rgba(0,0,0,0.2);
 }
 
-/******************************************************* SPLASH PAGE */
-.splash{
-    height: 100vh;
-    background: url(../img/splash_mobile.jpg);
-    background-size: cover;
-    background-position: center;
-
-    z-index: 1000;
+.line{
+    width: 100%;
+    height: .25rem;
+    border-radius: 5px;
 }
 
-.hamburger_menu{
+.nav{
+    display: flex;
+    align-items: flex-end;
+
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 0;
+    left: 0;
 
+    width: 100%;
+    padding: 2rem 0 1rem 2rem;
+}
+.nav_link{
+    display: none;
+    text-decoration: none;
+
+    font-family: var(--body_font);
+    font-size: var(--body_font_size);
+    line-height: .5rem;
+
+    margin: 0 1.1rem;
+}
+
+.hamburger{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
-    width: 1.75rem;
-    height: 1.75rem;
-}
-.line{
-    width: 100%;
-    height: .25rem;
+    width: 1.5rem;
+    height: 1.5rem;
 
-    border-radius: 5px;
-    background-color: white;
+    margin: 0;
+}
+
+/******************************************************* SPLASH PAGE */
+.splash{
+    background: url(../img/splash_mobile.jpg);
+    background-size: cover;
+    background-position: center;
+
 }
 
 .welcome_box{
-    display: grid;
-    grid-template-columns: 80%;
-    grid-template-rows: 20% 35% 15%;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    align-content: center;
 
     height: 100%;
+    max-height: 40rem;
+    padding: 5rem 2rem;
 
-    background-color: var(--blue_transparent);
-
-    text-align: center;
-    color: white;
+    background: rgb(251,251,251);
+    background: linear-gradient(217deg, rgba(251,251,251,0.75) 0%, rgba(242,242,242,1) 90%);
+    color: var(--grey);
 }
 .welcome_header{
-    border-bottom: 1.5px solid white;
-    padding: 0 1rem;
+    width: 100%;
 }
 .welcome_header h1{
     font-family: var(--header_font);
-    font-size: 4.5rem;
-    line-height: 5rem;
+    font-size: var(--header_font_size);
+    line-height: 4rem;
     letter-spacing: .2rem;
 
     margin: 0;
 }
 .welcome_header h2{
     font-family: var(--light_font);
-    font-size: 2rem;
+    font-size: var(--subheader_font_size);
 
     margin: 0;
 }
 .welcome_text{
     font-family: var(--body_font);
-    font-size: 1.3rem;
-    line-height: 1.6;
+    font-size: var(--body_font_size);
+    line-height: 2;
 }
 .welcome_button{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 
     width: 100%;
-    height: 100%;
-    max-height: 3.5rem;
-    max-width: 16rem;
+    height: 3rem;
+}
+.welcome_button p{
+    display: inline;
+    margin: 0;
 
-    background-color: var(--yellow);
-    border-radius: 3px;
+    font-family: var(--header_font);
+    font-size: var(--body_font_size);
+    border-bottom: 1px solid var(--grey);
 
-    font-family: var(--subheader_font);
-    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 /******************************************************* ABOUT PAGE */
@@ -147,26 +173,149 @@ body{
 .about{
     position: relative;
     background-color: var(--green);
-    z-index: 900;
+
+    padding: 5rem 2rem;
 }
 
 /*------------------------------------- <NAV> */
-nav{
-    display: none;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    padding: 1rem 0;
-    width: 100%;
+.about_nav{
+    background-color: var(--green);
 }
 
-nav a{
-    text-decoration: none;
-    color: black;
+.about_menu .line{
+    background-color: white;
 }
-nav a:visited{
-    color: black;
+
+.about_nav a{
+    color: white;
+}
+.about_nav a:visited{
+    color: white;
 }
 /*------------------------------------- </NAV> */
+
+.about_text{
+    color: white;
+}
+.about_header{
+    font-family: var(--header_font);
+    font-size: var(--subheader_font_size);
+}
+.about_body{
+    font-family: var(--body_font);
+    line-height: 2.2em;
+    font-size: 1.1rem;
+
+    padding-top: 1rem;
+}
+
+/******************************************************* SERVICES PAGE */
+.services{
+    position: relative;
+    padding: 5rem 2rem 2rem 2rem;
+
+    background-color: var(--white);
+    /* background: url(../img/services.jpeg); */
+}
+
+/*------------------------------------- <NAV> */
+
+.services_nav{
+    background-color: var(--white);
+}
+.services_menu .line{
+    background-color: black;
+}
+.services_nav a{
+    color: black;
+}
+.services_nav a:visited{
+    color: black;
+}
+
+/*------------------------------------- </NAV> */
+
+.services_text{
+    font-family: var(--header_font);
+    font-size: var(--body_font_size);
+    line-height: 2.2rem;
+    color: var(--grey);
+
+    margin: 1rem 0;
+}
+
+.services_list{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fill, 1fr);
+    grid-gap: 1rem;
+
+    padding-bottom: 2rem;
+}
+.service{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: var(--body_font);
+    font-size: var(--body_font_size);
+    color: var(--grey);
+
+    width: 100%;
+    height: 4rem;
+    padding: 1rem .5rem 1rem 0;
+    
+    border-bottom: 1px solid var(--grey);
+}
+.service p{
+    margin: 0;
+    line-height: .5rem;
+}
+.service img{
+    display: none;
+    width: .6rem;
+}
+.service_desc{
+    display: none;
+    padding: 0 1rem;
+}
+.service_desc_text{
+    font-family: var(--body_font);
+    color: var(--grey);
+    /* font-size: var(--body_font_size); */
+}
+
+/******************************************************* PACKAGES PAGE */
+
+.packages{
+    position: relative;
+
+    background-color: var(--white);
+
+    padding: 5rem 2rem;
+    box-shadow: none;
+}
+
+/*------------------------------------- <NAV> */
+
+.packages_nav{
+    background-color: var(--white);
+}
+.packages_menu .line{
+    background-color: black;
+}
+.packages_nav a{
+    color: black;
+}
+.packages_nav a:visited{
+    color: black;
+}
+
+/*------------------------------------- </NAV> */
+
+
+/******************************************************* OVERRIDES */
+.selected{
+    display: block;
+    pointer-events: none;
+}
