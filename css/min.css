@@ -12,6 +12,11 @@
  * OVERRIDES........................ 307
  *
  *
+ * Z-INDEX SCALE
+ * 
+ * 0 - background content
+ * 100 - page content
+ * 1000 - foreground content
  */
 
  *{
@@ -19,11 +24,13 @@
  }
 
 :root{
-    --blue: #537590;
-    --blue_transparent: rgba(83,117,144,.8);
-    --green: #81A899;
+    --blue: #dd9668;
+    --blue_transparent: rgba(82,141,173,.9);
+    --green: #758c7a;
     --yellow: #E6A53E;
+    --red: #c97256;
     --white: rgba(242,242,242,1);
+    --light_grey: rgb(107, 107, 107);
     --grey: rgb(82, 82, 82);
 
     --header_font: "Halant";
@@ -31,7 +38,7 @@
     --body_font: "Josefin-sans-medium";
     --light_font: "Josefin-sans-light";
 
-    --header_font_size: 4rem;
+    --header_font_size: 3rem;
     --subheader_font_size: 2rem;
     --body_font_size: 1.1rem;
 }
@@ -60,17 +67,17 @@ body{
     padding: 0;
 }
 
-/******************************************************* DEFAULT STYLES */
+/*************************************************************************************************** DEFAULT STYLES */
 .page{
+    position: relative;
     width: 100%;
-
-    box-shadow: 0px 7px 13px -6px rgba(0,0,0,0.2);
 }
 
 .line{
     width: 100%;
     height: .25rem;
     border-radius: 5px;
+    background-color: black;
 }
 
 .nav{
@@ -79,10 +86,15 @@ body{
 
     position: absolute;
     top: 0;
+    bottom: auto;
     left: 0;
 
     width: 100%;
     padding: 2rem 0 1rem 2rem;
+
+    background-color: var(--white);
+    overflow: hidden;
+    z-index: 1000;
 }
 .nav_link{
     display: none;
@@ -91,8 +103,12 @@ body{
     font-family: var(--body_font);
     font-size: var(--body_font_size);
     line-height: .5rem;
+    color: black;
 
     margin: 0 1.1rem;
+}
+.nav_link:visited{
+    color: black;
 }
 
 .hamburger{
@@ -107,96 +123,85 @@ body{
     margin: 0;
 }
 
-/******************************************************* SPLASH PAGE */
+.nav_load-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 100%;
+
+    border-top: 2px solid var(--blue);
+}
+
+/*************************************************************************************************** SPLASH PAGE */
 .splash{
     background: url(../img/splash_mobile.jpg);
     background-size: cover;
     background-position: center;
-
 }
 
 .welcome_box{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     height: 100%;
     max-height: 40rem;
     padding: 5rem 2rem;
 
-    background: rgb(251,251,251);
-    background: linear-gradient(217deg, rgba(251,251,251,0.75) 0%, rgba(242,242,242,1) 90%);
+    background: rgb(242,242,242);
+    background: linear-gradient(45deg, rgba(242,242,242,1) 0%, rgba(242,242,242,0.75) 100%);
+
     color: var(--grey);
+    text-align: center;
 }
 .welcome_header{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    height: 15rem;
     width: 100%;
 }
 .welcome_header h1{
-    font-family: var(--header_font);
+    font-family: var(--light_font);
     font-size: var(--header_font_size);
     line-height: 4rem;
-    letter-spacing: .2rem;
+    letter-spacing: .4rem;
+
+    border-bottom: 1px solid var(--grey);
 
     margin: 0;
 }
 .welcome_header h2{
-    font-family: var(--light_font);
-    font-size: var(--subheader_font_size);
-
-    margin: 0;
+    display: none;
 }
-.welcome_text{
+.welcome_text, .welcome_text_mobile{
     font-family: var(--body_font);
     font-size: var(--body_font_size);
     line-height: 2;
 }
-.welcome_button{
-    display: flex;
-    align-items: flex-end;
-
-    width: 100%;
-    height: 3rem;
+.welcome_text{
+    display: none;
 }
-.welcome_button p{
-    display: inline;
-    margin: 0;
-
-    font-family: var(--header_font);
-    font-size: var(--body_font_size);
-    border-bottom: 1px solid var(--grey);
-
-    cursor: pointer;
+.welcome_link{
+    display: none;
+}
+.welcome_logo{
+    width: 7.25rem;
 }
 
-/******************************************************* ABOUT PAGE */
+/*************************************************************************************************** ABOUT PAGE */
 
 .about{
-    position: relative;
-    background-color: var(--green);
-
+    background-color: var(--white);
     padding: 5rem 2rem;
+    color: var(--grey);
 }
 
-/*------------------------------------- <NAV> */
-.about_nav{
-    background-color: var(--green);
-}
-
-.about_menu .line{
-    background-color: white;
-}
-
-.about_nav a{
-    color: white;
-}
-.about_nav a:visited{
-    color: white;
-}
-/*------------------------------------- </NAV> */
-
-.about_text{
-    color: white;
-}
 .about_header{
     font-family: var(--header_font);
     font-size: var(--subheader_font_size);
@@ -209,32 +214,25 @@ body{
     padding-top: 1rem;
 }
 
-/******************************************************* SERVICES PAGE */
+/*************************************************************************************************** SERVICES PAGE */
 .services{
-    position: relative;
+    background: url(../img/services_mobile.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.services_content_wrap{
     padding: 5rem 2rem 2rem 2rem;
 
-    background-color: var(--white);
-    /* background: url(../img/services.jpeg); */
+    background: rgb(242,242,242);
+    background: linear-gradient(0deg, rgba(242,242,242,1) 0%, rgba(242,242,242,0.9) 50%, rgba(242,242,242,1) 100%);
+
+    z-index: 0;
 }
 
-/*------------------------------------- <NAV> */
-
-.services_nav{
-    background-color: var(--white);
+.services_header{
+    display: none;
 }
-.services_menu .line{
-    background-color: black;
-}
-.services_nav a{
-    color: black;
-}
-.services_nav a:visited{
-    color: black;
-}
-
-/*------------------------------------- </NAV> */
-
 .services_text{
     font-family: var(--header_font);
     font-size: var(--body_font_size);
@@ -242,6 +240,7 @@ body{
     color: var(--grey);
 
     margin: 1rem 0;
+    z-index: 100;
 }
 
 .services_list{
@@ -249,10 +248,12 @@ body{
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
     grid-gap: 1rem;
+    justify-content: center;
 
     padding-bottom: 2rem;
+    z-index: 100;
 }
-.service{
+.service_title{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -260,62 +261,121 @@ body{
     font-family: var(--body_font);
     font-size: var(--body_font_size);
     color: var(--grey);
+    line-height: .5rem;
 
     width: 100%;
     height: 4rem;
     padding: 1rem .5rem 1rem 0;
+    margin: 0;
     
     border-bottom: 1px solid var(--grey);
-}
-.service p{
-    margin: 0;
-    line-height: .5rem;
-}
-.service img{
-    display: none;
-    width: .6rem;
+    cursor: pointer;
 }
 .service_desc{
-    display: none;
+    max-height: 0;
+
     padding: 0 1rem;
+    overflow: hidden;
+
+    transition: .2s;
+    transition-timing-function: ease-out;
 }
 .service_desc_text{
     font-family: var(--body_font);
     color: var(--grey);
-    /* font-size: var(--body_font_size); */
+    line-height: 2rem;
+    margin: 1rem 0;
 }
 
-/******************************************************* PACKAGES PAGE */
+/**************************************************************************************************** PACKAGES PAGE */
 
 .packages{
+    background-color: var(--white);
+    padding: 5rem 2rem;
+    overflow: hidden;
+}
+
+.package_container{
     position: relative;
 
-    background-color: var(--white);
+    width: 100%;
+    height: 26rem;
+    margin: 2rem 0 7rem 0;
+}
 
-    padding: 5rem 2rem;
+.package_title{
+    color: var(--white);
+    font-family: var(--light_font);
+    font-size: var(--subheader_font_size);
+    
+    margin: 0 0 2rem 0;
+}
+.package_text{
+    color: var(--white);
+    font-family: var(--subheader_font);
+    font-size: var(--body_font_size);
+    line-height: 2.1rem;
+
+    margin: 0;
+}
+
+.custom{
+    top: 0;
+    background-color: var(--green);
+    background: url(../img/packages/mobile/custom_bg.jpg);
     box-shadow: none;
 }
-
-/*------------------------------------- <NAV> */
-
-.packages_nav{
-    background-color: var(--white);
+.basic{
+    top: 5rem;
+    background-color: var(--blue);
+    background: url(../img/packages/mobile/basic_bg.jpg);
 }
-.packages_menu .line{
-    background-color: black;
-}
-.packages_nav a{
-    color: black;
-}
-.packages_nav a:visited{
-    color: black;
+.premium{
+    top: 10rem;
+    background-color: var(--red);
+    background: url(../img/packages/mobile/premium_bg.jpg);
 }
 
-/*------------------------------------- </NAV> */
+.package{
+    position: absolute;
+
+    width: 100%;
+    max-width: 27.25rem;
+    height: 100%;
+    padding: 1.5rem 1rem;
+
+    border-radius: 7px;
+    box-shadow: 0px -3px 3px -1px rgba(0,0,0,0.2);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    z-index: 100;
+    transition: .2s;
+    cursor: pointer;
+}
+
+/**************************************************************************************************** CONTACT PAGE */
 
 
-/******************************************************* OVERRIDES */
+
+/*************************************************************************************************** OVERRIDES */
 .selected{
     display: block;
-    pointer-events: none;
+}
+.fixed{
+    position: fixed;
+    top: 0;
+    bottom: auto;
+}
+.bottom{
+    position: absolute;
+    top: auto;
+    bottom: 0;
+}
+.open{
+    max-height: 15rem;
+}
+
+.package_clicked{
+    transform: translateY(23rem)
 }

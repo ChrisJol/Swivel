@@ -2,118 +2,175 @@
     <head>
         <title>Swivel</title>
         <meta name="viewport" content="width=device-width, height=device-height">
-        <link rel="stylesheet" media="screen and (max-width: 500px)" href="css/min.css">
+        <!-- media="screen and (max-width: 500px)" -->
+        <link rel="stylesheet" href="css/min.css"> 
+        <link rel="stylesheet" media="screen and (min-width: 750px)" href="css/med.css">
+        <link rel="stylesheet" media="screen and (min-width: 1025" href="css/max.css">
     </head>
     <body>
         <div class="page splash">
             <div class="welcome_box">
-                <div class="welcome_header">
-                    <h2>Welcome to</h1>
-                    <h1>SWIVEL</h1>
-                </div>
-                <p class="welcome_text">Virtual Assistant services. Focus on your business, let me handle the rest. Lorem ipsum dolor sit amet.</p>
-                <div class="welcome_button">
-                    <p>What's a VA?</p>
+                <div class="welcome_box_content-wrap">
+                    <div class="welcome_header">
+                        <h2>Welcome to</h1>
+                        <img class="welcome_logo" src="img/icon/logo_blue.png" alt="swivel logo">
+                        <h1>SWIVEL</h1>
+                    </div>
+                    <p class="welcome_text_mobile">Virtual Assistant services</p>
+                    <p class="welcome_text">Focus on your business, let me handle the rest. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed sollicitudin metus.</p>
+                    <a class="welcome_link" href="#about">Why a Virtual Assistant?</a>
                 </div>
             </div>
         </div>
-        <div class="page about">
+        <div class="page about" id="about">
             <div class="nav about_nav">
                 <div class="hamburger about_menu">
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="line"></div>
                 </div>
-                <a href="#" class="nav_link selected">About</a>
-                <a href="#" class="nav_link">Services</a>
-                <a href="#" class="nav_link">Pricing</a>
-                <a href="#" class="nav_link">Contact</a>
+                <a href="#about" class="nav_link selected">About</a>
+                <a href="#services" class="nav_link">Services</a>
+                <a href="#pricing" class="nav_link">Pricing</a>
+                <a href="#contact" class="nav_link">Contact</a>
+                <div class="nav_load-bar"></div>
             </div>
             <div class="about_text">
-                <h1 class="about_header">What's a virtual assistant and how can it benefit your business?</h1>
+                <h1 class="about_header">Why a Virtual Assistant?</h1>
                 <p class="about_body">As a virtual assistant I have a vested interest in you and the success of your business, and with no fees or taxes to pay you get the benefit of a full time employee without the high price tag. Aliquam nec pharetra libero. Nulla vitae facilisis ipsum. Maecenas at augue ac nibh aliquam venenatis vel a tellus.</p>
             </div>
         </div>
-        <div class="page services">
+        <div class="page services" id="services">
             <div class="nav services_nav">
                 <div class="hamburger services_menu">
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="line"></div>
                 </div>
-                <a href="#" class="nav_link">About</a>
-                <a href="#" class="selected nav_link">Services</a>
-                <a href="#" class="nav_link">Pricing</a>
-                <a href="#" class="nav_link">Contact</a>
+                <a href="#about" class="nav_link">About</a>
+                <a href="#services" class="selected nav_link">Services</a>
+                <a href="#pricing" class="nav_link">Pricing</a>
+                <a href="#contact" class="nav_link">Contact</a>
+                <div class="nav_load-bar"></div>
             </div>
-            <h1 class="services_text">I offer  a range of services that you can mix and match to fit your business needs.</h1>
-            <div class="services_list">
-                <div class="service">
-                    <p>Itinerary</p>
-                    <img src="img/icon/plus.svg">
+            <div class="services_content_wrap">
+                <h1 class="services_header">Services</h1>
+                <p class="services_text">I offer  a range of services that you can mix and match to fit your business needs.</p>
+                <div class="services_list">
+                    <div class="service">
+                        <div class="service_title">
+                            <p>Itinerary</p>
+                            <p class="service_plus">+</p>
+                        </div>
+                        <div class="service_desc">
+                            <p class="service_desc_text">Develop Daily Agenda</p>
+                            <p class="service_desc_text">Flight, hotel, travel reservations</p>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="service_title">
+                            <p>Events</p>
+                            <p class="service_plus">+</p>
+                        </div>
+                        <div class="service_desc">
+                            <p class="service_desc_text">Vendor research & booking</p>
+                            <p class="service_desc_text">Venues</p>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="service_title">
+                            <p>Personal</p>
+                            <p class="service_plus">+</p>
+                        </div>
+                        <div class="service_desc">
+                            <p class="service_desc_text">Kids & family activity planning</p>
+                            <p class="service_desc_text">Personal Calendar Organizing/Updating</p>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="service_title">
+                            <p>Project Management</p>
+                            <p class="service_plus">+</p>
+                        </div>
+                        <div class="service_desc">
+                            <p class="service_desc_text">Internet research</p>
+                            <p class="service_desc_text">Maintaining a timeline of the project/deadlines</p>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="service_title">
+                            <p>Communication</p>
+                            <p class="service_plus">+</p>
+                        </div>
+                        <div class="service_desc">
+                            <p class="service_desc_text">Email / text management</p>
+                            <p class="service_desc_text">Forward phone</p>
+                        </div>
+                    </div>
+                    <div class="service">
+                        <div class="service_title">
+                            <p>Operations</p>
+                            <p class="service_plus">+</p>
+                        </div>
+                        <div class="service_desc">
+                            <p class="service_desc_text">Organizing sales and purchases</p>
+                            <p class="service_desc_text">Invoice and billing</p>
+                            <p class="service_desc_text">Calendar management</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="service_desc">
-                    <p class="service_desc_text">- Develop Daily Agenda</p>
-                    <p class="service_desc_text">- Flight, hotel, travel reservations</p>
-                </div>
-                <div class="service">
-                    <p>Events</p>
-                    <img src="img/icon/plus.svg">
-                </div>
-                <div class="service_desc">
-                    <p class="service_desc_text">Vendor research & booking</p>
-                    <p class="service_desc_text">Venues</p>
-                </div>
-                <div class="service">
-                    <p>Personal</p>
-                    <img src="img/icon/plus.svg">
-                </div>
-                <div class="service_desc">
-                    <p class="service_desc_text">Kids & family activity planning</p>
-                    <p class="service_desc_text">Personal Calendar Organizing/Updating</p>
-                </div>
-                <div class="service">
-                    <p>Project Investigation</p>
-                    <img src="img/icon/plus.svg">
-                </div>
-                <div class="service_desc">
-                    <p class="service_desc_text">Internet research</p>
-                    <p class="service_desc_text">Maintaining a timeline of the project/deadlines</p>
-                </div>
-                <div class="service">
-                    <p>Communication</p>
-                    <img src="img/icon/plus.svg">
-                </div>
-                <div class="service_desc">
-                    <p class="service_desc_text">Email / text management</p>
-                    <p class="service_desc_text">Forward phone</p>
-                </div>
-                <div class="service">
-                    <p>Operations</p>
-                    <img src="img/icon/plus.svg">
-                </div>
-                <div class="service_desc">
-                    <p class="service_desc_text">Organizing sales and purchases</p>
-                    <p class="service_desc_text">Invoice and billing</p>
-                    <p class="service_desc_text">Calendar management</p>
-                </div>
+                <p class="services_text">Don't see what your looking for? Ask me about it. We can create a personalized plan together.</p>
             </div>
-            <h1 class="services_text">Don't see what your looking for? Ask me about it. We can create a personalized plan together.</h1>
         </div>
-        <div class="page packages">
+        <div class="page packages" id="pricing">
             <div class="nav packages_nav">
                 <div class="hamburger packages_menu">
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="line"></div>
                 </div>
-                <a href="#" class="nav_link">About</a>
-                <a href="#" class="nav_link">Services</a>
-                <a href="#" class="nav_link selected">Pricing</a>
-                <a href="#" class="nav_link">Contact</a>
+                <a href="#about" class="nav_link">About</a>
+                <a href="#services" class="nav_link">Services</a>
+                <a href="#pricing" class="nav_link selected">Pricing</a>
+                <a href="#contact" class="nav_link">Contact</a>
+                <div class="nav_load-bar"></div>
+            </div>
+            <div class="package_container"">
+                <div class="package custom">
+                    <h2 class="package_title">Custom</h2>
+                    <p class="package_text">With a custom package you choose what you want and we can create a plan based off your selections. If there's a service that you're looking for that I don't offer, we can discuss the possibility of adding it.</p>
+                </div>
+                <div class="package basic">
+                    <h2 class="package_title">Basic</h2>
+                    <p class="package_text">- Lorem ipsum dolor</p>
+                    <p class="package_text">- Sit amet</p>
+                    <p class="package_text">- Consectetur adipiscing elit</p>
+                </div>
+                <div class="package premium">
+                    <h2 class="package_title">Premium</h2>
+                    <p class="package_text">- Lorem ipsum dolor</p>
+                    <p class="package_text">- Sit amet</p>
+                    <p class="package_text">- Consectetur adipiscing elit</p>
+                    <p class="package_text">- Lorem ipsum dolor</p>
+                    <p class="package_text">- Sit amet</p>
+                    <p class="package_text">- Consectetur adipiscing elit</p>
+                </div>
             </div>
         </div>
-        <div class="page contact"></div>
+        <div class="page contact" id="contact">
+            <div class="nav contact_nav">
+                <div class="hamburger contact_menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <a href="#about" class="nav_link">About</a>
+                <a href="#services" class="nav_link">Services</a>
+                <a href="#pricing" class="nav_link">Pricing</a>
+                <a href="#contact" class="nav_link selected">Contact</a>
+                <div class="nav_load-bar"></div>
+            </div>
+        </div>
         <script src="js/script.js"></script>
     </body>
 </html>
