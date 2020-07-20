@@ -24,23 +24,23 @@
  }
 
 :root{
-    --blue: #dd9668;
-    --blue_transparent: rgba(82,141,173,.9);
-    --green: #758c7a;
+    --brick-red: #C97256;
+    --orange: #DD9668;
     --yellow: #E6A53E;
-    --red: #c97256;
+    --mid-red: #DC8D6C;
     --white: rgba(242,242,242,1);
-    --light_grey: rgb(107, 107, 107);
     --grey: rgb(82, 82, 82);
 
-    --header_font: "Halant";
+    --header_font: "Quicksand";
     --subheader_font: "Halant-light";
+    --subheader_medium_font: "Halant";
     --body_font: "Josefin-sans-medium";
     --light_font: "Josefin-sans-light";
 
-    --header_font_size: 3rem;
-    --subheader_font_size: 2rem;
-    --body_font_size: 1.1rem;
+    --display_size: 3rem;
+    --header_size: 2rem;
+    --subheader_size: 1.7rem;
+    --body_size: 1.1rem;
 }
 
 @font-face{
@@ -60,6 +60,11 @@
     font-family: "Josefin-sans-medium";
     src: url(../font/JosefinSans-VariableFont_wght.ttf);
     font-wieght: 200;
+}
+@font-face{
+    font-family: "Quicksand";
+    src: url(../font/Quicksand-VariableFont_wght.ttf);
+    font-weight: 200;
 }
 
 body{
@@ -101,7 +106,7 @@ body{
     text-decoration: none;
 
     font-family: var(--body_font);
-    font-size: var(--body_font_size);
+    font-size: var(--body-size);
     line-height: .5rem;
     color: black;
 
@@ -131,7 +136,7 @@ body{
     width: 0;
     height: 100%;
 
-    border-top: 2px solid var(--blue);
+    border-bottom: 2px solid var(--brick-red);
 }
 
 /*************************************************************************************************** SPLASH PAGE */
@@ -167,8 +172,8 @@ body{
     width: 100%;
 }
 .welcome_header h1{
-    font-family: var(--light_font);
-    font-size: var(--header_font_size);
+    font-family: var(--header_font);
+    font-size: var(--display_size);
     line-height: 4rem;
     letter-spacing: .4rem;
 
@@ -181,7 +186,7 @@ body{
 }
 .welcome_text, .welcome_text_mobile{
     font-family: var(--body_font);
-    font-size: var(--body_font_size);
+    font-size: var(--body-size);
     line-height: 2;
 }
 .welcome_text{
@@ -204,19 +209,19 @@ body{
 
 .about_header{
     font-family: var(--header_font);
-    font-size: var(--subheader_font_size);
+    font-size: var(--header_size);
 }
 .about_body{
     font-family: var(--body_font);
     line-height: 2.2em;
-    font-size: 1.1rem;
+    font-size: var(--body_size);
 
     padding-top: 1rem;
 }
 
 /*************************************************************************************************** SERVICES PAGE */
 .services{
-    background: url(../img/services_mobile.jpg);
+    /* background: url(../img/services_mobile.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -235,7 +240,7 @@ body{
 }
 .services_text{
     font-family: var(--header_font);
-    font-size: var(--body_font_size);
+    font-size: var(--body_size);
     line-height: 2.2rem;
     color: var(--grey);
 
@@ -259,7 +264,7 @@ body{
     align-items: center;
 
     font-family: var(--body_font);
-    font-size: var(--body_font_size);
+    font-size: var(--body-size);
     color: var(--grey);
     line-height: .5rem;
 
@@ -306,14 +311,14 @@ body{
 .package_title{
     color: var(--white);
     font-family: var(--light_font);
-    font-size: var(--subheader_font_size);
+    font-size: var(--header_size);
     
     margin: 0 0 2rem 0;
 }
 .package_text{
     color: var(--white);
     font-family: var(--subheader_font);
-    font-size: var(--body_font_size);
+    font-size: var(--body-size);
     line-height: 2.1rem;
 
     margin: 0;
@@ -321,18 +326,18 @@ body{
 
 .custom{
     top: 0;
-    background-color: var(--green);
+    background-color: var(--orange);
     background: url(../img/packages/mobile/custom_bg.jpg);
     box-shadow: none;
 }
 .basic{
     top: 5rem;
-    background-color: var(--blue);
+    background-color: var(--mid-red);
     background: url(../img/packages/mobile/basic_bg.jpg);
 }
 .premium{
     top: 10rem;
-    background-color: var(--red);
+    background-color: var(--brick-red);
     background: url(../img/packages/mobile/premium_bg.jpg);
 }
 
