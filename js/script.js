@@ -2,6 +2,7 @@ let pages = document.querySelectorAll(".page")
 let navs = document.querySelectorAll(".nav")
 let services = document.querySelectorAll(".service")
 let packages = document.querySelectorAll(".package")
+let navFull = document.querySelector(".nav_full")
 
 let yOffset = window.pageYOffset
 let media = window.matchMedia("(max-width: 800px)")
@@ -11,7 +12,6 @@ let media = window.matchMedia("(max-width: 800px)")
  *  PAGE LOAD FUNCTION CALLS
  */
 setNavPosition(yOffset, pages, navs)
-if(media.matches) loadNav(yOffset, pages)
 mediaMatched(media)
 
 
@@ -27,7 +27,11 @@ document.addEventListener("scroll", function(){
     yOffset = window.pageYOffset //read screen's current y position
 
     setNavPosition(yOffset, pages, navs)
-    // if(media.matches) loadNav(yOffset, pages)
+
+    navFull.classList.remove("nav_expanded")
+    navFull.querySelector(".nav_full_wrap").innerHTML = ""
+    navFull.style.top = 0;
+
     // else updateSelected(yOffset, pages, navs)
 })
 
@@ -78,13 +82,90 @@ for(let i = 0; i < packages.length; i++)
     })
 }
 
+//touch events for all navs (mobile)
+for(let i = 0; i < navs.length; i++)
+{
+    let nav = navs[i]
+    nav.addEventListener("click", function(){
+        expandNav(nav)
+    })
+}
+
+function expandNav(nav){
+    let navLinks = nav.querySelectorAll(".nav_wrap .nav_link")
+    yOffset = window.pageYOffset
+
+    if(!navFull.classList.contains("nav_expanded"))
+    {
+        if(yOffset <= nav.parentElement.offsetTop)
+            navFull.style.top = nav.parentElement.offsetTop + nav.offsetHeight
+        else 
+            navFull.style.top = yOffset + nav.offsetHeight
+
+        navFull.classList.add("nav_expanded")
+        fadeIn({ duration: 100, element: navFull})
+
+        for(let i = 0; i < navLinks.length; i++)
+        {
+            let navLink = navLinks[i]
+            
+            if(!navLink.classList.contains("selected"))
+            {
+                let anchor = document.createElement("a")
+                let text = document.createTextNode(navLink.innerHTML)
+
+                anchor.classList.add("nav_link")
+                anchor.appendChild(text)
+                anchor.href = `#${navLink.innerHTML.toLowerCase()}`
+
+                link = navFull.querySelector(".nav_full_wrap").appendChild(anchor)
+
+                slideIn({ duration: 75, element: link })
+            }
+        }
+    }
+    else{
+        navFull.classList.remove("nav_expanded")
+        navFull.querySelector(".nav_full_wrap").innerHTML = ""
+        navFull.style.top = 0;
+    }
+}
+
+function slideIn({duration, element}){
+    let start = performance.now()
+
+    requestAnimationFrame(function slideIn(time){
+        let progress = (time - start) / duration
+
+        if(progress > 1) progress = 1
+
+        element.style.marginLeft = `${progress * 2.6}rem`
+
+        if(progress < 1) requestAnimationFrame(slideIn)
+    })
+}
+
+function fadeIn({duration, element}){
+    let start = performance.now()
+
+    requestAnimationFrame(function fadeIn(time){
+        let progress = (time - start) / duration
+
+        if(progress > 1) progress = 1
+
+        // element.style.background = `linear-gradient(0deg, rgba(242,242,242,0) 0%, rgba(242,242,242,${progress}) 50%)`
+        element.style.background = `rgba(242,242,242,${progress})`
+
+        if(progress < 1) requestAnimationFrame(fadeIn)
+    })
+}
+
 //set nav position on screen size change
 function mediaMatched(mediaQuery){
     let aboutPage = document.querySelector(".about")
     let aboutNav = aboutPage.querySelector(".nav")
     yOffset = window.pageYOffset
 
-    loadNav(yOffset, pages)
     for(let i = 0; i < packages.length; i++)
     {
         packages[i].classList.remove("package_clicked")
@@ -126,30 +207,6 @@ function setNavPosition(yOffset, elementList, navList){
                 nav.classList.remove("fixed")
                 nav.classList.add("bottom")
             }
-        }
-    }
-}
-
-//if on mobile display, update load bar on each nav relative to scroll position
-function loadNav(yOffset, pageList){
-    for(let i = 1; i < pageList.length; i++)
-    {
-        let page = pageList[i]
-        let navLoader = page.querySelector(".nav .nav_wrap .nav_load-bar")
-
-        let duration = (yOffset - page.offsetTop) / page.offsetHeight
-
-        if(duration <= 0)
-        {
-            navLoader.style.width = 0
-        }
-        else if(duration > 0)
-        {
-            navLoader.style.width = `${duration * 100}%`
-        }
-        else
-        {
-            navLoader.style.width = '100%'
         }
     }
 }

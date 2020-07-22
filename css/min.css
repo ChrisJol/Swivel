@@ -162,11 +162,41 @@ body{
     border-bottom: 2px solid var(--brick_red);
 }
 
+.nav_full{
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+
+    padding-top: 1.5rem;
+    width: 100%;
+    background: rgba(242,242,242, 0);
+    /* background: linear-gradient(0deg, rgba(242,242,242,0) 0%, rgba(242,242,242,0) 50%); */
+
+    opacity: 0;
+    z-index: 1000;
+}
+.nav_full_wrap{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.nav_full_wrap .nav_link{
+    display: block;
+    margin: 0 2.6rem 2.6rem 2.6rem;
+    margin-left: 0;
+    color: var(--grey);
+}
+
 /*************************************************************************************************** SPLASH PAGE */
 .splash{
     background: url(../img/splash_mobile.jpg);
     background-size: cover;
     background-position: center;
+}
+
+.splash_wrap{
+    height: 100%;
 }
 
 .welcome_box{
@@ -182,6 +212,7 @@ body{
 
     background: rgb(242,242,242);
     background: linear-gradient(45deg, rgba(242,242,242,1) 0%, rgba(242,242,242,0.75) 100%);
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
 
     color: var(--grey);
     text-align: center;
@@ -278,14 +309,20 @@ body{
 
     z-index: 100;
 }
-.service{
-    background: var(--brick_red);
-    background: linear-gradient(15deg, rgba(201,114,86,1) 0%, rgba(220,141,108,1) 100%);
-    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
 
+.service{
     border-radius: 3px;
     padding: .5rem 1rem;
 }
+.service:nth-child(even){
+    background: url(../img/services/service_bg1.jpg);
+    background-repeat: no-repeat;
+}
+.service:nth-child(odd){
+    background: url(../img/services/service_bg2.jpg);
+    background-repeat: no-repeat;
+}
+
 .service_title{
     display: flex;
     justify-content: space-between;
@@ -356,7 +393,7 @@ body{
 
     background: var(--brick_red);
     background: linear-gradient(15deg, rgba(201,114,86,1) 0%, rgba(220,141,108,1) 100%);
-    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
+    /* box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2); */
     border-radius: 3px;
     padding: .5rem 1rem;
 
@@ -395,8 +432,9 @@ body{
 
     margin: 1.7rem 0;
 }
-.package_plus{
+.package_price{
     color: var(--white);
+    /* font-size: 1rem; */
 }
 
 /**************************************************************************************************** CONTACT PAGE */
@@ -406,6 +444,7 @@ body{
 /*************************************************************************************************** OVERRIDES */
 .selected{
     display: block;
+    pointer-events: none;
 }
 .fixed{
     position: fixed;
@@ -424,4 +463,9 @@ body{
 
 .package_clicked{
     transform: translateY(23rem)
+}
+
+.nav_expanded{
+    opacity: 1;
+    z-index: 1001;
 }

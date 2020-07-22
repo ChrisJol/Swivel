@@ -187,11 +187,14 @@
     background-color: rgba(242,242,242, .9);
     border-radius: 3px;
 }
+.service:nth-child(even), .service:nth-child(odd){
+    background: none;
+    background-color: rgba(242,242,242, .9);
+}
 .service_title{
     justify-content: center;
 
     line-height: 2rem;
-    /* font-size: var(--header_size); */
     text-align: center;
     color: var(--grey);
 
