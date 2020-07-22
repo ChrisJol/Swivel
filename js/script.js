@@ -72,11 +72,11 @@ for(let i = 0; i < packages.length; i++)
             if(!packageDescription.classList.contains("open"))
             {
                 packageDescription.classList.add("open")
-                plus.innerHTML = "x"
+                // plus.innerHTML = "x"
             }
             else{
                 packageDescription.classList.remove("open")
-                plus.innerHTML = "+"
+                // plus.innerHTML = "+"
             }
         }
     })
@@ -95,7 +95,7 @@ function expandNav(nav){
     let navLinks = nav.querySelectorAll(".nav_wrap .nav_link")
     yOffset = window.pageYOffset
 
-    if(!navFull.classList.contains("nav_expanded"))
+    if(!navFull.classList.contains("nav_expanded") && media.matches)
     {
         if(yOffset <= nav.parentElement.offsetTop)
             navFull.style.top = nav.parentElement.offsetTop + nav.offsetHeight

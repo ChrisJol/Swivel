@@ -123,13 +123,12 @@ body{
     font-family: var(--display_font);
     font-size: var(--nav_size);
     line-height: 1.1rem;
-    color: var(--brick_red);
 
     margin: 0 1.1rem;
 }
-.nav_link:visited{
+/* .nav_link:visited{
     color: var(--brick_red);
-}
+} */
 
 .hamburger{
     display: flex;
@@ -193,6 +192,7 @@ body{
     background: url(../img/splash_mobile.jpg);
     background-size: cover;
     background-position: center;
+    max-height: 40rem;
 }
 
 .splash_wrap{
@@ -262,6 +262,14 @@ body{
 .about{
     color: var(--grey);
 }
+
+.about_nav .selected{
+    color: var(--brick_red);
+}
+.about_nav .selected:visited{
+    color: var(--brick_red);
+}
+
 .about_header{
     font-family: var(--display_font);
     font-size: var(--header_size);
@@ -278,6 +286,16 @@ body{
 .services{
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.services_nav .selected{
+    color: var(--mid-red);
+}
+.services_nav .selected:visited{
+    color: var(--mid-red);
+}
+.services_nav .line{
+    background-color: var(--mid-red)
 }
 
 .services_wrap{
@@ -367,6 +385,16 @@ body{
     overflow: hidden;
 }
 
+.packages_nav .selected{
+    color: var(--orange);
+}
+.packages_nav .selected:visited{
+    color: var(--orange);
+}
+.packages_nav .line{
+    background-color: var(--orange)
+}
+
 .packages_wrap{
     display: grid;
     grid-template-columns: 1fr;
@@ -438,6 +466,16 @@ body{
 }
 
 /**************************************************************************************************** CONTACT PAGE */
+
+.contact_nav .selected{
+    color: var(--orange);
+}
+.contact_nav .selected:visited{
+    color: var(--orange);
+}
+.contact_nav .line{
+    background-color: var(--orange)
+}
 
 
 
