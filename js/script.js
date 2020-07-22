@@ -27,7 +27,7 @@ document.addEventListener("scroll", function(){
     yOffset = window.pageYOffset //read screen's current y position
 
     setNavPosition(yOffset, pages, navs)
-    if(media.matches) loadNav(yOffset, pages)
+    // if(media.matches) loadNav(yOffset, pages)
     // else updateSelected(yOffset, pages, navs)
 })
 
@@ -59,27 +59,21 @@ for(let i = 0; i < services.length; i++)
 for(let i = 0; i < packages.length; i++)
 {
     let package = packages[i]
+    let plus = package.querySelector(".package_title .package_plus")
+    let packageDescription = package.querySelector(".package_desc")
 
     package.addEventListener("click", function(){
-        if(package.classList.contains("custom") && !package.classList.contains("selected") && media.matches)
+        if(media.matches)
         {
-            package.classList.add("selected")
-            packages[1].classList.remove("selected")
-            packages[1].classList.add("package_clicked")
-            packages[2].classList.add("package_clicked")
-        }
-        else if(package.classList.contains("basic") && !package.classList.contains("selected") && media.matches)
-        {
-            packages[0].classList.remove("selected")
-            package.classList.add("selected")
-            package.classList.remove("package_clicked")
-            packages[2].classList.add("package_clicked")
-        }
-        else{
-            packages[0].classList.remove("selected")
-            packages[1].classList.remove("selected")
-            packages[1].classList.remove("package_clicked")
-            packages[2].classList.remove("package_clicked")
+            if(!packageDescription.classList.contains("open"))
+            {
+                packageDescription.classList.add("open")
+                plus.innerHTML = "x"
+            }
+            else{
+                packageDescription.classList.remove("open")
+                plus.innerHTML = "+"
+            }
         }
     })
 }
@@ -141,7 +135,7 @@ function loadNav(yOffset, pageList){
     for(let i = 1; i < pageList.length; i++)
     {
         let page = pageList[i]
-        let navLoader = page.querySelector(".nav").querySelector(".nav_load-bar")
+        let navLoader = page.querySelector(".nav .nav_wrap .nav_load-bar")
 
         let duration = (yOffset - page.offsetTop) / page.offsetHeight
 
