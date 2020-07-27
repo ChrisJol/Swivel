@@ -5,7 +5,7 @@
 
 /*************************************************************************************************** DEFAULT STYLES */
 .wrapper{
-    max-width: 61rem;
+    max-width: 64rem;
     padding: 3rem 4rem;
 }
 
@@ -52,22 +52,27 @@
     background-repeat: no-repeat;
 }
 
-.welcome_box{
-    justify-content: flex-start;
-    align-items: flex-end;
-
-    height: 100%;
-    padding: 8rem 4rem;
-
-    background: linear-gradient(90deg, rgba(242,242,242,0) 0%, rgba(242,242,242,.95) 80%);
-}
 .splash_wrap{
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
-    
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    height: 100%;
+
+    background: linear-gradient(90deg, rgba(242,242,242,0) 0%, rgba(242,242,242,.95) 80%);
+}
+
+.welcome_box{
+    justify-content: center;
+    align-items: flex-start;
+
     height: 100%;
     width: 20rem;
+    padding: 0;
+
+    background: none;
+    box-shadow: none;
 }
 .welcome_header{
     justify-content: flex-end;
@@ -130,8 +135,11 @@
 
 .about{
     justify-content: center;
-
     min-height: 35rem;
+}
+
+.about_wrap{
+    margin: 5rem 0;
 }
 
 .about_header{
@@ -139,7 +147,6 @@
 }
 .about_body{
     line-height: 3.7rem;
-    padding-top: 1.5rem;
 }
 
 /*************************************************************************************************** SERVICES PAGE */
@@ -174,22 +181,40 @@
 }
 
 .services_list{
-    grid-template-columns: minmax(10rem, 17rem) minmax(10rem, 17rem) minmax(10rem, 17rem);
-    grid-template-rows: repeat(2, 1fr);
+    position: relative;
+
+    grid-template-columns: repeat(3, minmax(13rem, 1fr));
+    grid-template-rows: repeat(2, minmax(13rem, 17rem));
     align-content: center;
     margin: 2rem 0;
+    padding: 0;
 }
 .service{
-    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70% 30%;
+    justify-items: center;
+    align-items: center;
+
+    padding: 3rem 1rem;
 
     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
     background: none;
     background-color: rgba(242,242,242, .9);
     border-radius: 3px;
+
+    overflow: hidden;
+    cursor: pointer;
 }
 .service:nth-child(even), .service:nth-child(odd){
     background: none;
     background-color: rgba(242,242,242, .9);
+}
+
+.service_img{
+    display: block;
+    width: 7rem;    
+    fill:var(--brick_red);
 }
 .service_title{
     justify-content: center;
@@ -197,31 +222,43 @@
     line-height: 2rem;
     text-align: center;
     color: var(--grey);
+    font-size: 1.5rem;
 
-    border-bottom: 1px solid var(--grey);
-    cursor: auto;
+    padding: 0;
 }
 .service_plus {
     display: none;
 }
+
 .service_desc{
-    max-height: 35rem;
-    padding: 0;
-    margin-top: .5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    max-height: 50rem;
+
+    background-color: var(--white);
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
+
+    opacity: 0;
+    pointer-events: none;
 }
 .service_desc_text{
-    text-align: center;
-    line-height: 2rem;
+    line-height: 2.5rem;
     color: var(--grey);
 
     margin: .5rem;
 }
 
 /*************************************************************************************************** PACKAGES PAGE */
-.packages{
-    padding: 7rem 4rem;
-}
-
 .packages_nav{
     display: none;
 }
@@ -234,6 +271,18 @@
     grid-gap: 1rem;
 
     height: auto;
+    margin: 0;
+    margin-top: 1rem;
+}
+
+.packages_header{
+    display: block;
+    font-family: var(--display_font);
+    font-size: var(--header_size);
+    text-align: center;
+    letter-spacing: .05rem;
+    color: var(--grey);
+
     margin: 0;
 }
 
@@ -276,6 +325,10 @@
 }
 
 /**************************************************************************************************** CONTACT PAGE */
+.contact{
+    height: 100rem;
+}
+
 .contact_nav{
     display: none;
 }
@@ -283,4 +336,10 @@
 /*************************************************************************************************** OVERRIDES */
 .selected{
     border-bottom: 1px solid var(--brick_red);
+}
+
+.open{
+    border-top: none;
+    opacity: 1;
+    pointer-events: visible;
 }

@@ -28,33 +28,32 @@ document.addEventListener("scroll", function(){
 
     setNavPosition(yOffset, pages, navs)
 
-    navFull.classList.remove("nav_expanded")
-    navFull.querySelector(".nav_full_wrap").innerHTML = ""
-    navFull.style.top = 0;
-
-    // else updateSelected(yOffset, pages, navs)
+    if(media.matches)
+    {
+        navFull.classList.remove("nav_expanded")
+        navFull.querySelector(".nav_full_wrap").innerHTML = ""
+        navFull.style.top = 0;
+    }
+    else updateSelected(yOffset, pages, navs)
 })
 
 //touch events for all services (mobile only)
 for(let i = 0; i < services.length; i++)
 {
     let service = services[i]
-    let plus = service.children[0].children[1]
-    let serviceDescription = service.children[1]
+    let plus = service.querySelector(".service_title .service_plus")
+    let serviceDescription = service.querySelector(".service_desc")
 
     service.addEventListener("click", function(){
-        if(media.matches)
+        if(!serviceDescription.classList.contains("open"))
         {
-            if(!serviceDescription.classList.contains("open"))
-            {
-                serviceDescription.classList.add("open")
-                plus.innerHTML = "x"
-            }
-            else
-            {
-                serviceDescription.classList.remove("open")
-                plus.innerHTML = "+"
-            }
+            serviceDescription.classList.add("open")
+            if(media.matches) plus.innerHTML = "x"
+        }
+        else
+        {
+            serviceDescription.classList.remove("open")
+            if(media.matches) plus.innerHTML = "+"
         }
     })
 }
@@ -207,27 +206,31 @@ function setNavPosition(yOffset, elementList, navList){
                 nav.classList.remove("fixed")
                 nav.classList.add("bottom")
             }
+            else if(yOffset >= element.offsetTop + element.offsetHeight - nav.offsetHeight && !media.matches)
+            {
+                nav.classList.remove("bottom")
+                nav.classList.add("fixed")
+            }
         }
     }
 }
 
 //updates the nav's selected link based on scroll position
-function updateSelected(yOffset, pageList, navList){
+function updateSelected(yOffset, pageList){
     for(let i = 0; i < pageList.length; i++)
     {
         let page = pageList[i+1]
-        let nav = navList[i]
+        let nav = document.querySelector(".about_nav")
+        let navLinks = nav.querySelectorAll(".nav_link")
 
-        if(page != null && nav != null)
+        if(page != null && yOffset >= page.offsetTop - nav.offsetHeight && yOffset < page.offsetTop + page.offsetHeight)
         {
-            if(yOffset >= page.offsetTop && yOffset < page.offsetTop + page.offsetHeight && !nav.classList.contains("selected"))
+            for(let i = 0; i < navLinks.length; i++)
             {
-                console.log("test")
-                nav.classList.add("selected")
-            }
-            else if((yOffset > page.offsetTop + page.offsetHeight || yOffset < page.offsetTop) && nav.classList.contains("selected"))
-            {
-                nav.classList.remove("selected")
+                let link = navLinks[i]
+
+                if(page.id == link.innerHTML.toLowerCase()) link.classList.add("selected")
+                else link.classList.remove("selected")
             }
         }
     }

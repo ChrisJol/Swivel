@@ -1,8 +1,49 @@
+:root{
+    --header_size: 2.5rem;
+    --body_size: 1.3rem;
+}
+
+/*************************************************************************************************** DEFAULT STYLES */
+.wrapper{
+    padding: 3rem 0;
+    max-width: 61rem;
+}
+
 /*************************************************************************************************** SPLASH PAGE */
 .splash{
     height: 50rem;
+    max-height: 50rem;
+}
+
+.splash_wrap{
+    background: none;
+    max-width: 80rem;
+    padding: 3rem 6rem;
 }
 
 .welcome_box{
-    /* background: none; */
+    width: 23rem;
+}
+
+.welcome_header h1{
+    line-height: 5rem;
+}
+
+.welcome_text{
+    margin: 3rem 0;
+    line-height: 3rem;
+}
+
+/*************************************************************************************************** ABOUT PAGE */
+
+/*************************************************************************************************** SERVICES PAGE */
+.services_list{
+    grid-template-columns: repeat(3, 20rem);
+    grid-template-rows: repeat(2, 20rem);
+    align-content: center;
+    margin: 2rem 0;
+}
+
+.service_img{
+    width: 9rem;    
 }

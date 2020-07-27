@@ -197,6 +197,7 @@ body{
 
 .splash_wrap{
     height: 100%;
+    max-height: 40rem;
 }
 
 .welcome_box{
@@ -341,6 +342,10 @@ body{
     background-repeat: no-repeat;
 }
 
+.service_img{
+    display: none;
+}
+
 .service_title{
     display: flex;
     justify-content: space-between;
@@ -372,10 +377,14 @@ body{
     font-size: var(--body_size);
     color: var(--white);
     line-height: 2rem;
-    margin: 1.7rem 0;
+    margin: 1rem 0 1rem 1rem;
 }
 .service_plus{
     color: var(--white);
+}
+
+.final{
+    display: none;
 }
 
 /**************************************************************************************************** PACKAGES PAGE */
@@ -404,6 +413,10 @@ body{
 
     padding-bottom: 2rem;
     z-index: 100;
+}
+
+.packages_header{
+    display: none;
 }
 
 .packages_text{
@@ -496,11 +509,7 @@ body{
 }
 .open{
     max-height: 35rem;
-    border-top: 1px solid white;
-}
-
-.package_clicked{
-    transform: translateY(23rem)
+    border-top: 1px solid var(--white);
 }
 
 .nav_expanded{
