@@ -29,6 +29,7 @@
     --orange: #DD9668;
     --yellow: #E6A53E;
     --white: rgba(242,242,242,1);
+    --white_transparent: rgba(242,242,242,.95);
     --grey: rgb(82, 82, 82);
 
     --display_font: "Quicksand";
@@ -465,7 +466,7 @@ body{
     transition: .3s;
     transition-timing-function: ease-in-out;
 }
-.package_desc_text{
+.package_desc_text, .package_desc_summary{
     color: var(--white);
     font-family: var(--display_font);
     font-size: var(--body_size);
