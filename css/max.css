@@ -1,12 +1,12 @@
 :root{
-    --header_size: 2.5rem;
-    --body_size: 1.3rem;
+    /* --header_size: 2.5rem;
+    --body_size: 1.3rem; */
 }
 
 /*************************************************************************************************** DEFAULT STYLES */
 .wrapper{
-    padding: 3rem 0;
-    max-width: 61rem;
+    padding: 4rem 6rem;
+    max-width: 75rem;
 }
 
 /*************************************************************************************************** SPLASH PAGE */
@@ -37,13 +37,10 @@
 /*************************************************************************************************** ABOUT PAGE */
 
 /*************************************************************************************************** SERVICES PAGE */
-.services_list{
-    grid-template-columns: repeat(3, 20rem);
-    grid-template-rows: repeat(2, 20rem);
-    align-content: center;
-    margin: 2rem 0;
-}
 
-.service_img{
-    width: 9rem;    
+/*************************************************************************************************** PACKAGES PAGE */
+
+.packages_wrap{
+    max-width: 75rem;
+    margin: 0;
 }

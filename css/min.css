@@ -25,16 +25,14 @@
 
 :root{
     --brick_red: #C97256;
-    --mid-red: #DC8D6C;
-    --orange: #DD9668;
-    --yellow: #E6A53E;
-    --white: rgba(242,242,242,1);
+    --blue: rgb(60, 151, 204);
+    --white: rgb(242, 242, 242);
     --white_transparent: rgba(242,242,242,.95);
     --grey: rgb(82, 82, 82);
+    --light_grey: rgb(231, 231, 231);
 
-    --display_font: "Quicksand";
-    --body_font: "Josefin-sans-medium";
-    --light_font: "Josefin-sans-light";
+    --display_font: "Quicksand-Medium";
+    --body_font: "Quicksand-Light";
 
     --display_size: 3rem;
     --header_size: 2rem;
@@ -42,28 +40,16 @@
     --body_size: 1.2rem;
 }
 
+
 @font-face{
-    font-family: "Halant";
-    src: url(../font/Halant-Regular.ttf);
-}
-@font-face{
-    font-family: "Halant-light";
-    src: url(../font/Halant-Light.ttf);
-}
-@font-face{
-    font-family: "Josefin-sans-light";
-    src: url(../font/JosefinSans-VariableFont_wght.ttf);
-    font-weight: 100;
-}
-@font-face{
-    font-family: "Josefin-sans-medium";
-    src: url(../font/JosefinSans-VariableFont_wght.ttf);
-    font-wieght: 200;
-}
-@font-face{
-    font-family: "Quicksand";
+    font-family: "Quicksand-Light";
     src: url(../font/Quicksand-VariableFont_wght.ttf);
     font-weight: 200;
+}
+@font-face{
+    font-family: "Quicksand-Medium";
+    src: url(../font/Quicksand-VariableFont_wght.ttf);
+    font-weight: 400;
 }
 
 body{
@@ -121,7 +107,7 @@ body{
     display: none;
     text-decoration: none;
 
-    font-family: var(--display_font);
+    font-family: var(--body_font);
     font-size: var(--nav_size);
     line-height: 1.1rem;
 
@@ -190,7 +176,7 @@ body{
 
 /*************************************************************************************************** SPLASH PAGE */
 .splash{
-    background: url(../img/splash_mobile.jpg);
+    background: url(../img/splash/splash_mobile.jpg);
     background-size: cover;
     background-position: center;
     max-height: 40rem;
@@ -242,7 +228,7 @@ body{
     display: none;
 }
 .welcome_text, .welcome_text_mobile{
-    font-family: var(--display_font);
+    font-family: var(--body_font);
     font-size: var(--body_size);
     line-height: 2;
 }
@@ -277,7 +263,7 @@ body{
     font-size: var(--header_size);
 }
 .about_body{
-    font-family: var(--display_font);
+    font-family: var(--body_font);
     line-height: 2.2em;
     font-size: var(--body_size);
 
@@ -308,7 +294,7 @@ body{
     display: none;
 }
 .services_text{
-    font-family: var(--display_font);
+    font-family: var(--body_font);
     font-size: var(--body_size);
     line-height: 2.2rem;
     color: var(--grey);
@@ -318,11 +304,13 @@ body{
 }
 
 .services_list{
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
     grid-gap: .5rem;
-    justify-content: center;
+    justify-content: center; */
+
+    display: flex;
 
     padding-bottom: 2rem;
     margin: 3rem 0 0 0;
@@ -334,14 +322,14 @@ body{
     border-radius: 3px;
     padding: .5rem 1rem;
 }
-.service:nth-child(even){
+/* .service:nth-child(even){
     background: url(../img/services/service_bg1.jpg);
     background-repeat: no-repeat;
 }
 .service:nth-child(odd){
     background: url(../img/services/service_bg2.jpg);
     background-repeat: no-repeat;
-}
+} */
 
 .service_img{
     display: none;
@@ -352,7 +340,7 @@ body{
     justify-content: space-between;
     align-items: center;
 
-    font-family: var(--display_font);
+    font-family: var(--body_font);
     font-size: var(--body_size);
     color: var(--white);
     line-height: .5rem;
@@ -374,7 +362,7 @@ body{
     transition-timing-function: ease-in-out;
 }
 .service_desc_text{
-    font-family: var(--display_font);
+    font-family: var(--body_font);
     font-size: var(--body_size);
     color: var(--white);
     line-height: 2rem;
@@ -406,11 +394,11 @@ body{
 }
 
 .packages_wrap{
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
     grid-gap: .5rem;
-    justify-content: center;
+    justify-content: center; */
 
     padding-bottom: 2rem;
     z-index: 100;
@@ -421,7 +409,7 @@ body{
 }
 
 .packages_text{
-    font-family: var(--display_font);
+    font-family: var(--body_font);
     font-size: var(--body_size);
     line-height: 2.2rem;
     color: var(--grey);
@@ -443,21 +431,27 @@ body{
     transition: .2s;
     cursor: pointer;
 }
-.package_title{
+.package_header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    font-family: var(--display_font);
-    font-size: var(--body_size);
-    color: var(--white);
-    line-height: .5rem;
 
     width: 100%;
     height: 4rem;
     padding: 1rem .5rem 1rem 0;
     
     cursor: pointer;
+}
+.package_title{
+    font-family: var(--body_font);
+    font-size: var(--body_size);
+    color: var(--white);
+    line-height: .5rem;
+}
+.package_price{
+    font-family: var(--body_font);
+    font-size: var(--body_size);
+    color: var(--white);
 }
 .package_desc{
     max-height: 0;
@@ -468,15 +462,14 @@ body{
 }
 .package_desc_text, .package_desc_summary{
     color: var(--white);
-    font-family: var(--display_font);
+    font-family: var(--body_font);
     font-size: var(--body_size);
     line-height: 2.7rem;
 
     margin: 1.7rem 0;
 }
-.package_price{
-    color: var(--white);
-    /* font-size: 1rem; */
+.package_button{
+    display: none;
 }
 
 /**************************************************************************************************** CONTACT PAGE */
