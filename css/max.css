@@ -20,7 +20,8 @@
 .splash_wrap{
     background: none;
     max-width: 80rem;
-    padding: 3rem 6rem;
+    max-height: 50rem;
+    padding: 3rem 8rem;
 }
 
 .welcome_box{
