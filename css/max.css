@@ -1,18 +1,20 @@
-:root{
-    /* --header_size: 2.5rem;
-    --body_size: 1.3rem; */
-}
 
 /*************************************************************************************************** DEFAULT STYLES */
 .wrapper{
-    padding: 4rem 6rem;
-    max-width: 75rem;
+    padding: 3rem;
+    max-width: 72rem;
+    margin-bottom: 1rem;
 }
 
 /*************************************************************************************************** SPLASH PAGE */
 .splash{
     height: 50rem;
     max-height: 50rem;
+
+    background: url(../img/splash/Splash_L.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .splash_wrap{
@@ -41,6 +43,5 @@
 /*************************************************************************************************** PACKAGES PAGE */
 
 .packages_wrap{
-    max-width: 75rem;
-    margin: 0;
+    border-radius: 10px;
 }

@@ -4,6 +4,10 @@ let services = document.querySelectorAll(".service")
 let packages = document.querySelectorAll(".package")
 let navFull = document.querySelector(".nav_full")
 
+let packagesList = document.querySelectorAll(".package")
+let packageBtnLeft = document.querySelectorAll(".arrow-left")
+let packageBtnRight = document.querySelectorAll(".arrow-right")
+
 let yOffset = window.pageYOffset
 let media = window.matchMedia("(max-width: 800px)")
 
@@ -22,6 +26,60 @@ mediaMatched(media)
  //calls 'mediaMatched' function on change between mobile and desktop displays
 media.addListener(mediaMatched)
 
+for(let i = 0; i < packageBtnLeft.length; i++)
+{
+    packageBtnLeft[i].addEventListener("click", function(){
+        let offset = parseFloat(packagesList[0].style.transform.replace(/[^0-9\-.,]/g, ''))
+        let package = packagesList[i]
+        let packageWrap = document.querySelector(".packages_wrap")
+
+        if(!offset) offset = 0
+
+        if(offset == 0)
+        {
+            offset = -45
+            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/premium.jpg')"
+        }
+        else if(offset == -22.5)
+        {
+            offset = offset + 22.5
+            packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
+        }
+        else if(offset == -45)
+        {
+            offset = offset + 22.5
+            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/basic.jpg')"
+        }
+   
+        for(let j = 0; j < packagesList.length; j++) packagesList[j].style.transform = `translateX(${offset}rem)`
+    })
+
+    packageBtnRight[i].addEventListener("click", function(){
+        let offset = parseFloat(packagesList[0].style.transform.replace(/[^0-9\-.,]/g, ''))
+        let package = packagesList[i]
+        let packageWrap = document.querySelector(".packages_wrap")
+
+        if (!offset) offset = 0
+
+        if(offset == -45)
+        {
+            offset = 0
+            packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
+        }
+        else if(offset == -22.5)
+        {
+            offset = offset - 22.5
+            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/premium.jpg')"
+        }
+        else if(offset == 0)
+        {
+            offset = offset - 22.5
+            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/basic.jpg')"
+        }
+    
+        for(let j = 0; j < packagesList.length; j++) packagesList[j].style.transform = `translateX(${offset}rem)`
+    })
+}
 //calls animation functions on each scroll frame
 document.addEventListener("scroll", function(){
     yOffset = window.pageYOffset //read screen's current y position
