@@ -43,7 +43,7 @@ for(let i = 0; i < packageBtnLeft.length; i++)
         else if(offset == -22.5)
         {
             offset = offset + 22.5
-            packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
+            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
         }
         else if(offset == -45)
         {
@@ -64,7 +64,7 @@ for(let i = 0; i < packageBtnLeft.length; i++)
         if(offset == -45)
         {
             offset = 0
-            packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
+            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
         }
         else if(offset == -22.5)
         {
