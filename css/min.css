@@ -72,8 +72,6 @@ body{
     width: 100%;
 
     background-color: var(--white);
-
-    z-index: var(--Z-CNT);
 }
 
 .wrapper{
