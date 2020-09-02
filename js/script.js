@@ -4,9 +4,12 @@ let services = document.querySelectorAll(".service")
 let packages = document.querySelectorAll(".package")
 let navFull = document.querySelector(".nav_full")
 
+let packageWrap = document.querySelector(".packages_wrap")
 let packagesList = document.querySelectorAll(".package")
 let packageBtnLeft = document.querySelectorAll(".arrow-left")
 let packageBtnRight = document.querySelectorAll(".arrow-right")
+let packagesHeader = document.querySelector(".packages_header")
+let packagesText = document.querySelector(".packages_text")
 
 let yOffset = window.pageYOffset
 let media = window.matchMedia("(max-width: 800px)")
@@ -30,25 +33,33 @@ for(let i = 0; i < packageBtnLeft.length; i++)
 {
     packageBtnLeft[i].addEventListener("click", function(){
         let offset = parseFloat(packagesList[0].style.transform.replace(/[^0-9\-.,]/g, ''))
-        let package = packagesList[i]
-        let packageWrap = document.querySelector(".packages_wrap")
 
         if(!offset) offset = 0
 
         if(offset == 0)
         {
             offset = -45
-            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/premium.jpg')"
+
+            packagesHeader.style.color = "var(--grey)"
+            packagesText.style.color = "var(--grey)"
+            packageWrap.style.backgroundImage = "url('../img/packages/desktop/premium.jpg')"
         }
         else if(offset == -22.5)
         {
             offset = offset + 22.5
-            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
+
+            packagesHeader.style.color = "var(--grey)"
+            packagesText.style.color = "var(--grey)"
+            packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
         }
         else if(offset == -45)
         {
             offset = offset + 22.5
-            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/basic.jpg')"
+            
+            packagesHeader.style.color = "var(--white)"
+            packagesText.style.color = "var(--white)"
+            packageWrap.style.backgroundImage = "url('../img/packages/desktop/basic.jpg')"
+
         }
    
         for(let j = 0; j < packagesList.length; j++) packagesList[j].style.transform = `translateX(${offset}rem)`
@@ -56,25 +67,32 @@ for(let i = 0; i < packageBtnLeft.length; i++)
 
     packageBtnRight[i].addEventListener("click", function(){
         let offset = parseFloat(packagesList[0].style.transform.replace(/[^0-9\-.,]/g, ''))
-        let package = packagesList[i]
-        let packageWrap = document.querySelector(".packages_wrap")
 
         if (!offset) offset = 0
 
         if(offset == -45)
         {
             offset = 0
-            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
+
+            packagesHeader.style.color = "var(--grey)"
+            packagesText.style.color = "var(--grey)"
+            packageWrap.style.backgroundImage = "url('../img/packages/desktop/custom.jpg')"
         }
         else if(offset == -22.5)
         {
             offset = offset - 22.5
-            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/premium.jpg')"
+
+            packagesHeader.style.color = "var(--grey)"
+            packagesText.style.color = "var(--grey)"
+            packageWrap.style.backgroundImage = "url('../img/packages/desktop/premium.jpg')"
         }
         else if(offset == 0)
         {
             offset = offset - 22.5
-            // packageWrap.style.backgroundImage = "url('../img/packages/desktop/basic.jpg')"
+
+            packagesHeader.style.color = "var(--white)"
+            packagesText.style.color = "var(--white)"
+            packageWrap.style.backgroundImage = "url('../img/packages/desktop/basic.jpg')"
         }
     
         for(let j = 0; j < packagesList.length; j++) packagesList[j].style.transform = `translateX(${offset}rem)`

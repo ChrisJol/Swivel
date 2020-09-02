@@ -38,6 +38,10 @@
     --header_size: 2rem;
     --nav_size: 1.5rem;
     --body_size: 1.2rem;
+
+    --Z-CNT: 1000;
+    --Z-GUI: 10000;
+    --Z-NAV: 100000;
 }
 
 
@@ -68,6 +72,8 @@ body{
     width: 100%;
 
     background-color: var(--white);
+
+    z-index: var(--Z-CNT);
 }
 
 .wrapper{
@@ -91,7 +97,7 @@ body{
 
     background-color: var(--white);
     overflow: hidden;
-    z-index: 1000;
+    z-index: var(--Z-NAV);
 }
 .nav_wrap{
     position: relative;
@@ -241,6 +247,7 @@ a{
 }
 .welcome_link{
     display: none;
+    z-index: var(--Z-GUI);
 }
 .welcome_logo{
     width: 8rem;
