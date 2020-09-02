@@ -1,6 +1,6 @@
 :root{
     --display_size: 4rem;
-    --nav_size: 1.2rem;
+    --nav_size: 1.05rem;
 }
 
 body::after{
@@ -343,8 +343,8 @@ body::after{
 .services_list{
     position: relative;
 
-    grid-template-columns: repeat(3, minmax(14rem, 17rem));
-    grid-template-rows: repeat(2, minmax(14rem, 17rem));
+    grid-template-columns: repeat(3, minmax(13rem, 22rem));
+    grid-template-rows: repeat(2, minmax(13rem, 17rem));
     grid-gap: 1rem;
     justify-content: start;
 
