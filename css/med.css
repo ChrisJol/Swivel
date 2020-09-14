@@ -17,7 +17,7 @@ body::after{
 /*************************************************************************************************** DEFAULT STYLES */
 .wrapper{
     max-width: 75rem;
-    padding: 3rem 4rem;
+    padding: 5rem 5rem;
 }
 
 .hamburger{
@@ -173,16 +173,18 @@ body::after{
     display: none;
 }
 
-.packages_wrap{
+.packages{
     background: url(../img/packages/desktop/custom.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center left;
+}
 
+.packages_wrap{
     height: auto;
     margin: 0;
 
-    transition: .5s;
+    transition: background .5s;
 }
 
 .packages_header{
@@ -262,8 +264,8 @@ body::after{
     max-height: 100rem;
     overflow: hidden;
 
-    transition: .3s;
-    transition-timing-function: ease-in-out;
+    /* transition: .3s;
+    transition-timing-function: ease-in-out; */
 }
 .package_desc_summary{
     color: var(--grey);
@@ -288,13 +290,13 @@ body::after{
 
     font-family: var(--body_font);
     font-size: var(--body_size);
-    color: var(--grey);
+    color: var(--blue);
     line-height: 2rem;
 
     width: max-content;
     padding: .5rem .5rem 0 0;
 
-    border-bottom: .3px solid var(--grey);
+    border-bottom: .3px solid var(--blue);
     cursor: pointer;
 }
 
@@ -314,16 +316,20 @@ body::after{
     cursor: pointer;
 }
 .arrow-left{
-    border-right: .8rem solid var(--grey);
+    border-right: .8rem solid var(--blue);
 }
 .arrow-right{
-    border-left: .8rem solid var(--grey);
+    border-left: .8rem solid var(--blue);
 }
 /*************************************************************************************************** SERVICES PAGE */
 .services{
     padding: 0;
+
+    background-image: url(../img/services/services.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+
+    height: 800px;
 }
 
 .services_nav{
@@ -332,119 +338,62 @@ body::after{
 
 .services_header{
     display: block;
+
+    text-align: center;
     color: var(--grey);
     letter-spacing: .05rem;
+
+    margin-left: 18rem;
 }
 .services_text{
+    text-align: center;
     font-size: var(--body_size);
     margin: 0;
+
+    margin-left: 18rem;
 }
 
 .services_list{
     position: relative;
 
-    grid-template-columns: repeat(3, minmax(13rem, 22rem));
-    grid-template-rows: repeat(2, minmax(13rem, 17rem));
-    grid-gap: 1rem;
-    justify-content: start;
-
-    margin: 2rem 0;
+    /* height: 100%; */
+    margin: 3rem 0 0 18rem;
     padding: 0;
-}
-.basic_plan, .premium_plan, .custom_plan{
-    display: flex;
-    justify-content: flex-start;
-}
 
-.line-break{
-    grid-column: span 3;
-    border-bottom: 1px solid var(--grey);
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-content: center;
+    grid-gap: .75rem;
 }
 
 .service{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 70% 30%;
-    justify-items: center;
-    align-items: center;
+    height: 100%;
+    width: 100%;
 
-    padding: 3rem 1rem;
-    /* margin: 0 20px 20px 0; */
-
-    min-height: 100%;
-    min-width: 100%;
-
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+    /* box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.1); */
     background: none;
-    border:1px dashed var(--blue);
+    background-color: var(--white);
     border-radius: 10px;
 
     overflow: hidden;
-    cursor: pointer;
     transition: .3s;
-}
-.service:hover{
-    transition: .1s;
-    /* box-shadow: -3px 3px 5px 1px rgba(0,0,0,0.15); */
-    border: none;
-    background-color: var(--blue);
-    /* transform: translate(3px, -3px); */
-}
-.service:hover .service_img{
-    transition: .1s;
-    fill: var(--white);
-}
-.service:hover .service_title{
-    transition: .1s;
-    color: var(--white);
-}
-
-.events, .assistant{
-    border: 1px dashed var(--brick_red);
-    transition: .3s;
-}
-.events:hover, .assistant:hover{
-    background-color: var(--brick_red);
-}
-.events .service_img, .assistant .service_img{
-    fill: var(--brick_red);
-    transition: .3s;
-}
-.events .service_title, .assistant .service_title{
-    color: var(--brick_red);
-    transition: .3s;
-}
-
-.final{
-    display: block;
-
-    color: var(--grey);
-    /* background-color: rgb(81,197,101); */
-    max-width: 100%;
-    min-width: 100%;
-    max-height: 9rem;
-    min-height: 9rem;
 }
 
 .service_img{
-    display: block;
-    width: 7rem;    
+    display: none;
+    width: 5.5rem;    
     fill: var(--blue);
     transition: .3s;
 }
 .service_title{
-    justify-content: center;
-
+    /* text-align: center; */
     line-height: 2rem;
-    text-align: center;
-    color: var(--blue);
-    font-size: var(--body_size);
+    color: var(--grey);
+    font-size: 1.5rem;
 
     padding: 0;
+    margin: 0;
     transition: .3s;
-}
-.final .service_title{
-    color: var(--grey);
 }
 
 .service_plus {
@@ -452,35 +401,56 @@ body::after{
 }
 
 .service_desc{
-    position: absolute;
-    top: 0;
-    left: 0;
-
+    display: block;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* align-items: center; */
 
-    padding: 2rem;
+    padding: 0;
+    margin: 0;
     width: 100%;
     height: 100%;
-    max-height: 50rem;
+    max-height: 60rem;
 
-    background-color: var(--blue);
-    border-radius: 10px;
-    /* box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2); */
-
-    opacity: 0;
-    pointer-events: none;
+    pointer-events: auto;
 }
 
-.events .service_desc, .assistant .service_desc{
-    background-color: var(--brick_red);
-}
 .service_desc_text{
-    line-height: 2.5rem;
-    color: var(--white);
+    display: none;
 
-    margin: .5rem;
+    font-size: 1rem;
+    color: var(--grey);
+    line-height: 1.3rem;
+
+    margin: 0;
+    margin-left: 30px;
+}
+.service_desc_text::before {
+    content: "- ";
+    margin-left: -15px;
+
+}
+
+.more{
+    display: inline;
+    max-width: max-content;
+
+    font-family: var(--body_font);
+    font-size: 1rem;
+    color: var(--blue);
+    line-height: 1.3rem;
+
+    cursor: pointer;
+}
+
+/**************************************************************************************************** ABOUTME PAGE */
+.aboutme_nav{
+    display: none;
+}
+
+.aboutme{
+    background: url(../img/about_placeholder.jpg);
+    height: 900px;
 }
 
 /**************************************************************************************************** CONTACT PAGE */
@@ -494,11 +464,15 @@ body::after{
 
 /*************************************************************************************************** OVERRIDES */
 .selected{
-    border-bottom: 1px solid var(--brick_red);
+    border-bottom: 1px solid var(--blue);
 }
 
 .open{
-    /* border-top: none; */
+    border-top: none;
     opacity: 1;
     pointer-events: visible;
+}
+
+.visible{
+    display: inline;
 }

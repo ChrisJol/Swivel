@@ -8,24 +8,28 @@
 
 /*************************************************************************************************** SPLASH PAGE */
 .splash{
-    height: 50rem;
-    max-height: 50rem;
+    max-height: 56.25rem;
+    height: 56.25rem;
 
     background: url(../img/splash/Splash_L.jpg);
-    background-position: center;
+    background-position: 55% center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .splash_wrap{
+    justify-content: center;
+
     background: none;
     max-width: 80rem;
-    max-height: 50rem;
+    max-height: 56.25rem;
+    height: 56.25rem;
     padding: 3rem 8rem;
 }
 
 .welcome_box{
     width: 23rem;
+    height: 100%;
 }
 
 .welcome_header h1{
@@ -40,6 +44,13 @@
 /*************************************************************************************************** ABOUT PAGE */
 
 /*************************************************************************************************** SERVICES PAGE */
+.services{
+    max-height: 56.25rem;
+    height: 56.25rem;
+
+    background-image: url(../img/services/services_L.jpg);
+    background-position: center;
+}
 
 /*************************************************************************************************** PACKAGES PAGE */
 

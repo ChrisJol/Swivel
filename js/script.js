@@ -4,12 +4,12 @@ let services = document.querySelectorAll(".service")
 let packages = document.querySelectorAll(".package")
 let navFull = document.querySelector(".nav_full")
 
-let packageWrap = document.querySelector(".packages_wrap")
-let packagesList = document.querySelectorAll(".package")
-let packageBtnLeft = document.querySelectorAll(".arrow-left")
-let packageBtnRight = document.querySelectorAll(".arrow-right")
-let packagesHeader = document.querySelector(".packages_header")
-let packagesText = document.querySelector(".packages_text")
+let packagesPage = document.querySelector(".packages")
+let packagesList = packagesPage.querySelectorAll(".package")
+let packageBtnLeft = packagesPage.querySelectorAll(".arrow-left")
+let packageBtnRight = packagesPage.querySelectorAll(".arrow-right")
+let packagesHeader = packagesPage.querySelector(".packages_header")
+let packagesText = packagesPage.querySelector(".packages_text")
 
 let yOffset = window.pageYOffset
 let media = window.matchMedia("(max-width: 800px)")
@@ -42,7 +42,7 @@ for(let i = 0; i < packageBtnLeft.length; i++)
 
             packagesHeader.style.color = "var(--grey)"
             packagesText.style.color = "var(--grey)"
-            packageWrap.style.backgroundImage = "url('/Swivel/img/packages/desktop/premium.jpg')"
+            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/premium.jpg')"
         }
         else if(offset == -22.5)
         {
@@ -50,7 +50,7 @@ for(let i = 0; i < packageBtnLeft.length; i++)
 
             packagesHeader.style.color = "var(--grey)"
             packagesText.style.color = "var(--grey)"
-            packageWrap.style.backgroundImage = "url('/Swivel/img/packages/desktop/custom.jpg')"
+            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/custom.jpg')"
         }
         else if(offset == -45)
         {
@@ -58,7 +58,7 @@ for(let i = 0; i < packageBtnLeft.length; i++)
             
             packagesHeader.style.color = "var(--white)"
             packagesText.style.color = "var(--white)"
-            packageWrap.style.backgroundImage = "url('/Swivel/img/packages/desktop/basic.jpg')"
+            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/basic.jpg')"
 
         }
    
@@ -76,7 +76,7 @@ for(let i = 0; i < packageBtnLeft.length; i++)
 
             packagesHeader.style.color = "var(--grey)"
             packagesText.style.color = "var(--grey)"
-            packageWrap.style.backgroundImage = "url('/Swivel/img/packages/desktop/custom.jpg')"
+            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/custom.jpg')"
         }
         else if(offset == -22.5)
         {
@@ -84,7 +84,7 @@ for(let i = 0; i < packageBtnLeft.length; i++)
 
             packagesHeader.style.color = "var(--grey)"
             packagesText.style.color = "var(--grey)"
-            packageWrap.style.backgroundImage = "url('/Swivel/img/packages/desktop/premium.jpg')"
+            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/premium.jpg')"
         }
         else if(offset == 0)
         {
@@ -92,7 +92,7 @@ for(let i = 0; i < packageBtnLeft.length; i++)
 
             packagesHeader.style.color = "var(--white)"
             packagesText.style.color = "var(--white)"
-            packageWrap.style.backgroundImage = "url('/Swivel/img/packages/desktop/basic.jpg')"
+            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/basic.jpg')"
         }
     
         for(let j = 0; j < packagesList.length; j++) packagesList[j].style.transform = `translateX(${offset}rem)`

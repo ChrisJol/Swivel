@@ -261,10 +261,10 @@ a{
 }
 
 .about_nav .selected{
-    color: var(--brick_red);
+    color: var(--blue);
 }
 .about_nav .selected:visited{
-    color: var(--brick_red);
+    color: var(--blue);
 }
 
 .about_header{
@@ -411,7 +411,6 @@ a{
 .services_list{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, 1fr);
     grid-gap: .5rem;
     justify-content: center;
 
@@ -431,21 +430,14 @@ a{
 }
 
 .service_title{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     font-family: var(--body_font);
     font-size: var(--body_size);
     color: var(--white);
     line-height: .5rem;
 
     width: 100%;
-    height: 4rem;
     padding: 1rem .5rem 1rem 0;
     margin: 0;
-    
-    cursor: pointer;
 }
 .service_desc{
     max-height: 0;
@@ -466,11 +458,9 @@ a{
 .service_plus{
     color: var(--white);
 }
-
-.final{
+.more{
     display: none;
 }
-
 /**************************************************************************************************** CONTACT PAGE */
 
 .contact_nav .selected{
