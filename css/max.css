@@ -1,9 +1,17 @@
 
 /*************************************************************************************************** DEFAULT STYLES */
+.page{
+    justify-content: center;
+}
+
 .wrapper{
     padding: 3rem;
     max-width: 72rem;
     margin-bottom: 1rem;
+
+    max-height: 56.25rem;
+    /* height: 100%; */
+    /* height: 56.25rem; */
 }
 
 /*************************************************************************************************** SPLASH PAGE */
@@ -22,7 +30,6 @@
 
     background: none;
     max-width: 80rem;
-    max-height: 56.25rem;
     height: 56.25rem;
     padding: 3rem 8rem;
 }
@@ -43,6 +50,20 @@
 
 /*************************************************************************************************** ABOUT PAGE */
 
+/*************************************************************************************************** PACKAGES PAGE */
+
+.packages{
+    background-image: url(../img/packages/desktop/custom_L.jpg);
+    background-position: 80% center;
+
+    max-height: 56.25rem;
+    height: 56.25rem;
+}
+
+.packages_wrap{
+
+}
+
 /*************************************************************************************************** SERVICES PAGE */
 .services{
     max-height: 56.25rem;
@@ -52,8 +73,10 @@
     background-position: center;
 }
 
-/*************************************************************************************************** PACKAGES PAGE */
+.services_header{
+    margin-top: -10rem;
+}
 
-.packages_wrap{
-    border-radius: 10px;
+.services_list{
+    margin-top: 5rem;
 }

@@ -297,12 +297,6 @@ a{
 }
 
 .packages_wrap{
-    /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, 1fr);
-    grid-gap: .5rem;
-    justify-content: center; */
-
     padding-bottom: 2rem;
     z-index: 100;
 }
