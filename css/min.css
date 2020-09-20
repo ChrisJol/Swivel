@@ -370,25 +370,6 @@ a{
 }
 
 /*************************************************************************************************** SERVICES PAGE */
-.services{
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.services_nav .selected{
-    color: var(--brick_red);
-}
-.services_nav .selected:visited{
-    color: var(--brick_red);
-}
-.services_nav .line{
-    background-color: var(--brick_red)
-}
-
-.services_wrap{
-    z-index: 0;
-}
-
 .services_header{
     display: none;
 }
@@ -415,12 +396,7 @@ a{
 }
 
 .service{
-    border-radius: 3px;
     padding: .5rem 1rem;
-}
-
-.service_img{
-    display: none;
 }
 
 .service_title{
@@ -456,16 +432,6 @@ a{
     display: none;
 }
 /**************************************************************************************************** CONTACT PAGE */
-
-.contact_nav .selected{
-    color: var(--brick_red);
-}
-.contact_nav .selected:visited{
-    color: var(--brick_red);
-}
-.contact_nav .line{
-    background-color: var(--brick_red)
-}
 
 
 

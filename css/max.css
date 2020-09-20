@@ -60,10 +60,6 @@
     height: 56.25rem;
 }
 
-.packages_wrap{
-
-}
-
 /*************************************************************************************************** SERVICES PAGE */
 .services{
     max-height: 56.25rem;
@@ -78,5 +74,5 @@
 }
 
 .services_list{
-    margin-top: 5rem;
+    margin-top: 3rem;
 }

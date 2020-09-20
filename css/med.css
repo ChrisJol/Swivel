@@ -225,8 +225,8 @@ body::after{
     padding: 1rem 2rem 2rem 2rem;
 
     background: none;
-    background-color: var(--white_transparent);
-    border-radius: 3px;
+    /* background-color: var(--white_transparent); */
+    border: 1px solid var(--grey);
 
     cursor: auto;
     transform: translateX(0rem);
@@ -336,14 +336,14 @@ body::after{
 .services_header{
     display: block;
 
-    text-align: center;
+    /* text-align: center; */
     color: var(--grey);
     letter-spacing: .05rem;
 
     margin-left: 18rem;
 }
 .services_text{
-    text-align: center;
+    /* text-align: center; */
     font-size: var(--body_size);
     margin: 0;
 
@@ -354,7 +354,7 @@ body::after{
     position: relative;
 
     /* height: 100%; */
-    margin: 3rem 0 0 18rem;
+    margin: 5rem 0 0 18rem;
     padding: 0;
 
     grid-template-columns: 1fr 1fr;
@@ -366,12 +366,13 @@ body::after{
 .service{
     height: 100%;
     width: 100%;
-    padding: 1rem;
+    padding: 1rem 0;
 
     /* box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.1); */
     background: none;
-    background-color: var(--white);
-    /* border-radius: 10px; */
+    /* background-color: var(--white); */
+    /* border-bottom: .5px solid var(--grey); */
+    border-radius: 0;
 
     overflow: hidden;
     transition: .3s;
@@ -476,7 +477,7 @@ body::after{
 
 .aboutme_header{
     margin-top: 2rem;
-    color: var(--grey);
+    color: black;
 }
 .aboutme_text{
     font-family: var(--body_font);
@@ -487,9 +488,18 @@ body::after{
     max-width: 30rem;
 }
 
+.signature{
+    width: 13rem;
+    float: right;
+    margin: -1rem 0 0 0;
+}
+
 /**************************************************************************************************** CONTACT PAGE */
-.contact{
-    height: 100rem;
+.contact_info{
+    line-height: 1rem;
+    font-family: var(--body_font);
+    font-size: var(--body_size);
+    color: var(--grey);
 }
 
 .contact_nav{
