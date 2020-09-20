@@ -101,6 +101,7 @@ body::after{
 
     height: auto;
 }
+
 .welcome_header h1{
     justify-self: flex-start;
     display: inline-block;
@@ -109,6 +110,7 @@ body::after{
 
     letter-spacing: .1rem;
     line-height: 4.5rem;
+    margin-bottom: 1rem;
 }
 .welcome_header h2{
     display: inline;
@@ -452,9 +454,37 @@ body::after{
     display: none;
 }
 
+.aboutme_wrap{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    /* align-items: center; */
+}
+
 .aboutme{
-    /* background: url(../img/about_placeholder.jpg); */
-    /* height: 900px; */
+    background-image: url(../img/headshot_2.jpg);
+    background-size: cover;
+    background-position: right center;
+    height: 900px;
+}
+
+.aboutme_content{
+    /* background-color: var(--white); */
+    padding: 2rem;
+    border-radius: 2px;
+}
+
+.aboutme_header{
+    margin-top: 2rem;
+    color: var(--grey);
+}
+.aboutme_text{
+    font-family: var(--body_font);
+    font-size: var(--body_size);
+    color: var(--grey);
+    line-height: 2.2rem;
+
+    max-width: 30rem;
 }
 
 /**************************************************************************************************** CONTACT PAGE */

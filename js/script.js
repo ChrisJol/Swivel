@@ -117,19 +117,25 @@ document.addEventListener("scroll", function(){
 for(let i = 0; i < services.length; i++)
 {
     let service = services[i]
-    let plus = service.querySelector(".service_title .service_plus")
-    let serviceDescription = service.querySelector(".service_desc")
+    let more = service.querySelector(".more")
+    let invisible = service.querySelectorAll(".invisible")
 
-    service.addEventListener("click", function(){
-        if(!serviceDescription.classList.contains("open"))
+    more.addEventListener("click", function(){
+        for(let i = 0; i < invisible.length; i++)
         {
-            serviceDescription.classList.add("open")
-            if(media.matches) plus.innerHTML = "x"
-        }
-        else
-        {
-            serviceDescription.classList.remove("open")
-            if(media.matches) plus.innerHTML = "+"
+            let desc = invisible[i]
+
+            console.log(desc.style.display)
+
+            if(desc.style.display == "none")
+            {
+                desc.style.display = "inline"
+                more.style.display = "none"
+            }
+            else{
+                desc.style.display = "none"
+                more.style.display = "inline"
+            }
         }
     })
 }
