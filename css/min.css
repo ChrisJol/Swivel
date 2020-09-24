@@ -1,24 +1,3 @@
-/* TABLE OF CONTENTS (line numbers may be inaccurate)
- *
- * DEFAULT STYLES................... 61
- *
- * SPLASH PAGE...................... 98
- *      hamburger menu
- *
- * ABOUT PAGE....................... 162
- *      hamburger menu
- *      nav
- *
- * OVERRIDES........................ 307
- *
- *
- * Z-INDEX SCALE
- * 
- * 0 - background content
- * 100 - page content
- * 1000 - foreground content
- */
-
  *{
      box-sizing: border-box;
  }
@@ -36,6 +15,7 @@
 
     --display_size: 3rem;
     --header_size: 2rem;
+    --subheader_size: 1.5rem;
     --nav_size: 1.5rem;
     --body_size: 1.2rem;
 
@@ -62,6 +42,10 @@ body{
 }
 
 /*************************************************************************************************** DEFAULT STYLES */
+body{
+    background-color: var(--white);
+}
+
 .page{
     position: relative;
 
@@ -79,7 +63,7 @@ body{
 
     width: 100%;
     max-width: 35rem;
-    padding: 5rem 2rem 4rem 2rem;
+    padding: 4rem 2rem 4rem 2rem;
 }
 
 .nav{
@@ -113,13 +97,14 @@ body{
 
     font-family: var(--body_font);
     font-size: var(--nav_size);
+    color: var(--grey);
     line-height: 1.1rem;
 
     margin: 0 1.1rem;
 }
-/* .nav_link:visited{
-    color: var(--brick_red);
-} */
+.nav_link:visited{
+    color: var(--grey);
+}
 
 .hamburger{
     display: flex;
@@ -136,52 +121,30 @@ body{
     width: 100%;
     height: .25rem;
     border-radius: 5px;
-    background-color: var(--brick_red);
-}
-
-.nav_load-bar{
-    display: none;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 0;
-    height: 100%;
-
-    border-bottom: 2px solid var(--brick_red);
-}
-
-.nav_full{
-    position: absolute;
-
-    display: flex;
-    justify-content: center;
-
-    padding-top: 1.5rem;
-    width: 100%;
-    background: rgba(242,242,242, 0);
-    /* background: linear-gradient(0deg, rgba(242,242,242,0) 0%, rgba(242,242,242,0) 50%); */
-
-    opacity: 0;
-    z-index: 1000;
-}
-.nav_full_wrap{
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.nav_full_wrap .nav_link{
-    display: block;
-    margin: 0 2.6rem 2.6rem 2.6rem;
-    margin-left: 0;
-    color: var(--grey);
+    background-color: var(--blue);
 }
 
 a{
     text-decoration: none;
+    color: var(--blue);
+}
+a:visited{
+    text-decoration: none;
+    color: var(--blue);
 }
 
+.header{
+    font-family: var(--body_font);
+    font-size: var(--header_size);
+    color: var(--grey);
+}
+
+.anchor{
+    display: block;
+    position: absolute;
+    top: -3.625rem;
+    visibility: hidden;
+}
 /*************************************************************************************************** SPLASH PAGE */
 .splash{
     background: url(../img/splash/splash_mobile.jpg);
@@ -259,18 +222,6 @@ a{
 .about{
     color: var(--grey);
 }
-
-.about_nav .selected{
-    color: var(--blue);
-}
-.about_nav .selected:visited{
-    color: var(--blue);
-}
-
-.about_header{
-    font-family: var(--display_font);
-    font-size: var(--header_size);
-}
 .about_body{
     font-family: var(--body_font);
     line-height: 2.2em;
@@ -286,23 +237,9 @@ a{
     overflow: hidden;
 }
 
-.packages_nav .selected{
-    color: var(--brick_red);
-}
-.packages_nav .selected:visited{
-    color: var(--brick_red);
-}
-.packages_nav .line{
-    background-color: var(--brick_red)
-}
-
 .packages_wrap{
     padding-bottom: 2rem;
     z-index: 100;
-}
-
-.packages_header{
-    display: none;
 }
 
 .packages_text{
@@ -315,18 +252,23 @@ a{
     z-index: 100;
 }
 
+.package_list{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+}
+
 .package{
     width: 100%;
 
-    background: var(--brick_red);
-    background: linear-gradient(15deg, rgba(201,114,86,1) 0%, rgba(220,141,108,1) 100%);
-    /* box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2); */
     border-radius: 3px;
     padding: .5rem 1rem;
 
     z-index: 100;
     transition: .2s;
     cursor: pointer;
+
+    border: 1px solid var(--grey);
 }
 .package_header{
     display: flex;
@@ -341,38 +283,43 @@ a{
 }
 .package_title{
     font-family: var(--body_font);
-    font-size: var(--body_size);
-    color: var(--white);
+    font-size: var(--subheader_size);
+    color: var(--grey);
     line-height: .5rem;
 }
 .package_price{
     font-family: var(--body_font);
     font-size: var(--body_size);
-    color: var(--white);
+    color: var(--grey);
 }
 .package_desc{
-    max-height: 0;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 1rem;
+
     overflow: hidden;
 
     transition: .3s;
     transition-timing-function: ease-in-out;
 }
+
+.package_desc_text{
+    margin: 0;
+}
+.package_desc_text::before {
+    content: "- ";
+}
 .package_desc_text, .package_desc_summary{
-    color: var(--white);
+    color: var(--grey);
     font-family: var(--body_font);
     font-size: var(--body_size);
     line-height: 2.7rem;
-
-    margin: 1.7rem 0;
 }
 .package_button{
     display: none;
 }
 
 /*************************************************************************************************** SERVICES PAGE */
-.services_header{
-    display: none;
-}
 .services_text{
     font-family: var(--body_font);
     font-size: var(--body_size);
@@ -396,66 +343,66 @@ a{
 }
 
 .service{
-    padding: .5rem 1rem;
+    padding: 0;
 }
 
 .service_title{
     font-family: var(--body_font);
-    font-size: var(--body_size);
-    color: var(--white);
+    font-size: var(--subheader_size);
+    color: var(--grey);
     line-height: .5rem;
 
     width: 100%;
     padding: 1rem .5rem 1rem 0;
     margin: 0;
 }
-.service_desc{
-    max-height: 0;
-
+.service_desc, .service_list{
     padding: 0;
+    margin: 0 0 0 1rem;
+
     overflow: hidden;
+    list-style-type: none;
 
     transition: .3s;
     transition-timing-function: ease-in-out;
 }
-.service_desc_text{
+.service_desc_text, .service_list_text{
     font-family: var(--body_font);
     font-size: var(--body_size);
-    color: var(--white);
+    color: var(--grey);
     line-height: 2rem;
-    margin: 1rem 0 1rem 1rem;
-}
-.service_plus{
-    color: var(--white);
+    margin: 0;
 }
 .more{
     display: none;
 }
+
+/**************************************************************************************************** ABOUTME PAGE */
+.aboutme_text{
+    font-family: var(--body_font);
+    font-size: var(--body_size);
+    color: var(--grey);
+}
+
+.signature{
+    width: 13rem;
+    float: right;
+    margin: -1rem 0 0 0;
+}
+
 /**************************************************************************************************** CONTACT PAGE */
+.contact_info{
+    line-height: 1rem;
+    font-family: var(--body_font);
+    font-size: var(--body_size);
+    color: var(--grey);
+}
 
 
 
 /*************************************************************************************************** OVERRIDES */
-.selected{
-    display: block;
-    pointer-events: none;
-}
 .fixed{
     position: fixed;
     top: 0;
     bottom: auto;
-}
-.bottom{
-    position: absolute;
-    top: auto;
-    bottom: 0;
-}
-.open{
-    max-height: 35rem;
-    border-top: 1px solid var(--white);
-}
-
-.nav_expanded{
-    opacity: 1;
-    z-index: 1001;
 }

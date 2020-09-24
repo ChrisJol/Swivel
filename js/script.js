@@ -1,8 +1,8 @@
 let pages = document.querySelectorAll(".page")
-let navs = document.querySelectorAll(".nav")
+let nav = document.querySelector(".about_nav")
+let about = document.querySelector(".about")
 let services = document.querySelectorAll(".service")
 let packages = document.querySelectorAll(".package")
-let navFull = document.querySelector(".nav_full")
 
 let packagesPage = document.querySelector(".packages")
 let packagesList = packagesPage.querySelectorAll(".package")
@@ -18,9 +18,8 @@ let media = window.matchMedia("(max-width: 800px)")
 /*
  *  PAGE LOAD FUNCTION CALLS
  */
-setNavPosition(yOffset, pages, navs)
+setNavPosition(yOffset)
 mediaMatched(media)
-
 
 /*
  * EVENT LISTENER ASSIGNMENTS
@@ -29,36 +28,48 @@ mediaMatched(media)
  //calls 'mediaMatched' function on change between mobile and desktop displays
 media.addListener(mediaMatched)
 
-for(let i = 0; i < packageBtnLeft.length; i++)
+//calls animation functions on each scroll frame
+document.addEventListener("scroll", function(){
+    yOffset = window.pageYOffset //read screen's current y position
+    setNavPosition(yOffset)
+})
+
+//touch events for all services
+services.forEach(service => expandServices(service))
+
+
+if(!media.matches)
+{
+    for(let i = 0; i < packageBtnLeft.length; i++)
 {
     packageBtnLeft[i].addEventListener("click", function(){
         let offset = parseFloat(packagesList[0].style.transform.replace(/[^0-9\-.,]/g, ''))
 
         if(!offset) offset = 0
 
-        if(offset == 0)
+        if(offset == 0) //premium
         {
             offset = -45
 
-            packagesHeader.style.color = "var(--grey)"
-            packagesText.style.color = "var(--grey)"
-            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/premium.jpg')"
+            packagesPage.classList.remove("custom_selected")
+            packagesPage.classList.remove("basic_selected")
+            packagesPage.classList.add("premium_selected")
         }
-        else if(offset == -22.5)
+        else if(offset == -22.5) //custom
         {
             offset = offset + 22.5
 
-            packagesHeader.style.color = "var(--grey)"
-            packagesText.style.color = "var(--grey)"
-            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/custom.jpg')"
+            packagesPage.classList.remove("basic_selected")
+            packagesPage.classList.remove("premium_selected")
+            packagesPage.classList.add("custom_selected")
         }
-        else if(offset == -45)
+        else if(offset == -45) //basic
         {
             offset = offset + 22.5
             
-            packagesHeader.style.color = "var(--white)"
-            packagesText.style.color = "var(--white)"
-            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/basic.jpg')"
+            packagesPage.classList.remove("premium_selected")
+            packagesPage.classList.remove("custom_selected")
+            packagesPage.classList.add("basic_selected")
 
         }
    
@@ -70,250 +81,97 @@ for(let i = 0; i < packageBtnLeft.length; i++)
 
         if (!offset) offset = 0
 
-        if(offset == -45)
+        if(offset == -45) //custom
         {
             offset = 0
 
-            packagesHeader.style.color = "var(--grey)"
-            packagesText.style.color = "var(--grey)"
-            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/custom.jpg')"
+            packagesPage.classList.remove("basic_selected")
+            packagesPage.classList.remove("premium_selected")
+            packagesPage.classList.add("custom_selected")
         }
-        else if(offset == -22.5)
+        else if(offset == -22.5) //premium
         {
             offset = offset - 22.5
 
-            packagesHeader.style.color = "var(--grey)"
-            packagesText.style.color = "var(--grey)"
-            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/premium.jpg')"
+            packagesPage.classList.remove("custom_selected")
+            packagesPage.classList.remove("basic_selected")
+            packagesPage.classList.add("premium_selected")
         }
-        else if(offset == 0)
+        else if(offset == 0) //basic
         {
             offset = offset - 22.5
 
-            packagesHeader.style.color = "var(--white)"
-            packagesText.style.color = "var(--white)"
-            packagesPage.style.backgroundImage = "url('/Swivel/img/packages/desktop/basic.jpg')"
+            packagesPage.classList.remove("premium_selected")
+            packagesPage.classList.remove("custom_selected")
+            packagesPage.classList.add("basic_selected")
         }
     
         for(let j = 0; j < packagesList.length; j++) packagesList[j].style.transform = `translateX(${offset}rem)`
     })
 }
-//calls animation functions on each scroll frame
-document.addEventListener("scroll", function(){
-    yOffset = window.pageYOffset //read screen's current y position
+}
 
-    setNavPosition(yOffset, pages, navs)
 
-    if(media.matches)
-    {
-        navFull.classList.remove("nav_expanded")
-        navFull.querySelector(".nav_full_wrap").innerHTML = ""
-        navFull.style.top = 0;
-    }
-    else updateSelected(yOffset, pages, navs)
-})
+/*
+ * FUNCTIONS
+ */
 
-//touch events for all services (mobile only)
-for(let i = 0; i < services.length; i++)
-{
-    let service = services[i]
+function expandServices(service){
     let more = service.querySelector(".more")
-    let invisible = service.querySelectorAll(".invisible")
+    let less = service.querySelector(".less")
+    let serviceList = service.querySelector(".service_list")
+    let serviceDesc = service.querySelector(".service_desc")
 
     more.addEventListener("click", function(){
-        for(let i = 0; i < invisible.length; i++)
-        {
-            let desc = invisible[i]
+        service.classList.add("service_open")
+        serviceList.classList.add("open")
+        more.remove()
 
-            console.log(desc.style.display)
-
-            if(desc.style.display == "none")
+        services.forEach(service_to_be_hidden => {
+            if(!service_to_be_hidden.querySelector(".service_list").classList.contains("open"))
             {
-                desc.style.display = "inline"
-                more.style.display = "none"
+                service_to_be_hidden.querySelector(".service_title").classList.add("hidden")
+                service_to_be_hidden.querySelector(".service_desc").classList.add("hidden")
             }
-            else{
-                desc.style.display = "none"
-                more.style.display = "inline"
-            }
-        }
+        })
     })
-}
 
-//touch events for all packages (mobile only)
-for(let i = 0; i < packages.length; i++)
-{
-    let package = packages[i]
-    let plus = package.querySelector(".package_title .package_plus")
-    let packageDescription = package.querySelector(".package_desc")
+    less.addEventListener("click", function(){
+        serviceDesc.appendChild(more)
+        service.classList.remove("service_open")
+        serviceList.classList.remove("open")
 
-    package.addEventListener("click", function(){
-        if(media.matches)
-        {
-            if(!packageDescription.classList.contains("open"))
-            {
-                packageDescription.classList.add("open")
-                // plus.innerHTML = "x"
-            }
-            else{
-                packageDescription.classList.remove("open")
-                // plus.innerHTML = "+"
-            }
-        }
-    })
-}
-
-//touch events for all navs (mobile)
-for(let i = 0; i < navs.length; i++)
-{
-    let nav = navs[i]
-    nav.addEventListener("click", function(){
-        expandNav(nav)
-    })
-}
-
-function expandNav(nav){
-    let navLinks = nav.querySelectorAll(".nav_wrap .nav_link")
-    yOffset = window.pageYOffset
-
-    if(!navFull.classList.contains("nav_expanded") && media.matches)
-    {
-        if(yOffset <= nav.parentElement.offsetTop)
-            navFull.style.top = nav.parentElement.offsetTop + nav.offsetHeight
-        else 
-            navFull.style.top = yOffset + nav.offsetHeight
-
-        navFull.classList.add("nav_expanded")
-        fadeIn({ duration: 100, element: navFull})
-
-        for(let i = 0; i < navLinks.length; i++)
-        {
-            let navLink = navLinks[i]
-            
-            if(!navLink.classList.contains("selected"))
-            {
-                let anchor = document.createElement("a")
-                let text = document.createTextNode(navLink.innerHTML)
-
-                anchor.classList.add("nav_link")
-                anchor.appendChild(text)
-                anchor.href = `#${navLink.innerHTML.toLowerCase()}`
-
-                link = navFull.querySelector(".nav_full_wrap").appendChild(anchor)
-
-                slideIn({ duration: 75, element: link })
-            }
-        }
-    }
-    else{
-        navFull.classList.remove("nav_expanded")
-        navFull.querySelector(".nav_full_wrap").innerHTML = ""
-        navFull.style.top = 0;
-    }
-}
-
-function slideIn({duration, element}){
-    let start = performance.now()
-
-    requestAnimationFrame(function slideIn(time){
-        let progress = (time - start) / duration
-
-        if(progress > 1) progress = 1
-
-        element.style.marginLeft = `${progress * 2.6}rem`
-
-        if(progress < 1) requestAnimationFrame(slideIn)
-    })
-}
-
-function fadeIn({duration, element}){
-    let start = performance.now()
-
-    requestAnimationFrame(function fadeIn(time){
-        let progress = (time - start) / duration
-
-        if(progress > 1) progress = 1
-
-        // element.style.background = `linear-gradient(0deg, rgba(242,242,242,0) 0%, rgba(242,242,242,${progress}) 50%)`
-        element.style.background = `rgba(242,242,242,${progress})`
-
-        if(progress < 1) requestAnimationFrame(fadeIn)
+        services.forEach(service_to_be_hidden => {
+            service_to_be_hidden.querySelector(".service_title").classList.remove("hidden")
+            service_to_be_hidden.querySelector(".service_desc").classList.remove("hidden")
+        })
     })
 }
 
 //set nav position on screen size change
 function mediaMatched(mediaQuery){
     let aboutPage = document.querySelector(".about")
-    let aboutNav = aboutPage.querySelector(".nav")
     yOffset = window.pageYOffset
-
-    for(let i = 0; i < packages.length; i++)
-    {
-        packages[i].classList.remove("package_clicked")
-        packages[i].classList.remove("selected")
-    }
 
     if(yOffset >= aboutPage.offsetTop && !mediaQuery.matches)
     {
-        aboutNav.classList.add("fixed")
-        aboutNav.classList.remove("bottom")
+        nav.classList.add("fixed")
+        nav.classList.remove("bottom")
     }
 }
 
 //set whether nav is fixed or absolutely positioned based on scroll position
-function setNavPosition(yOffset, elementList, navList){
+function setNavPosition(yOffset){
+    let fixed = nav.classList.contains("fixed")
 
-    let element, nav
-    for(let i = 0; i < elementList.length; i++)
+    if(yOffset >= about.offsetTop && !fixed)
     {
-        element = elementList[i+1]
-        nav = navList[i]
-
-        if(element != null & nav != null)
-        {
-            let fixed = nav.classList.contains("fixed")
-
-            if(yOffset >= element.offsetTop && yOffset < element.offsetTop + element.offsetHeight - nav.offsetHeight && !fixed)
-            {
-                nav.classList.remove("bottom")
-                nav.classList.add("fixed")
-            }
-            else if(yOffset < element.offsetTop && fixed)
-            {
-                nav.classList.remove("fixed")
-                nav.classList.remove("bottom")
-            }
-            else if(yOffset >= element.offsetTop + element.offsetHeight - nav.offsetHeight && fixed && media.matches)
-            {
-                nav.classList.remove("fixed")
-                nav.classList.add("bottom")
-            }
-            else if(yOffset >= element.offsetTop + element.offsetHeight - nav.offsetHeight && !media.matches)
-            {
-                nav.classList.remove("bottom")
-                nav.classList.add("fixed")
-            }
-        }
+        nav.classList.remove("bottom")
+        nav.classList.add("fixed")
     }
-}
-
-//updates the nav's selected link based on scroll position
-function updateSelected(yOffset, pageList){
-    for(let i = 0; i < pageList.length; i++)
+    else if(yOffset < about.offsetTop && fixed)
     {
-        let page = pageList[i+1]
-        let nav = document.querySelector(".about_nav")
-        let navLinks = nav.querySelectorAll(".nav_link")
-
-        if(page != null && yOffset >= page.offsetTop - nav.offsetHeight && yOffset < page.offsetTop + page.offsetHeight)
-        {
-            for(let i = 0; i < navLinks.length; i++)
-            {
-                let link = navLinks[i]
-
-                if(page.id == link.innerHTML.toLowerCase()) link.classList.add("selected")
-                else link.classList.remove("selected")
-            }
-        }
+        nav.classList.remove("fixed")
+        nav.classList.remove("bottom")
     }
 }
