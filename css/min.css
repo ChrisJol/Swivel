@@ -335,11 +335,6 @@ a:visited{
     grid-template-columns: 1fr;
     grid-gap: .5rem;
     justify-content: center;
-
-    padding-bottom: 2rem;
-    margin: 3rem 0 0 0;
-
-    z-index: 100;
 }
 
 .service{

@@ -87,9 +87,20 @@
 
 /**************************************************************************************************** ABOUTME PAGE */
 .aboutme{
-    background-image: url(../img/headshot_L.jpg);
+    background-image: url(../img/aboutme/headshot_L.jpg);
     background-size: cover;
     background-position: 70% center;
 
     height: 900px;
+}
+
+/**************************************************************************************************** CONTACT PAGE */
+.contact{
+    /* background-image: url(../img/contact/headshot2_L.jpg); */
+
+    /* height: 900px; */
+}
+
+.contact_content{
+    /* margin: 13rem 0 0 30rem; */
 }

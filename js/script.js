@@ -3,6 +3,7 @@ let nav = document.querySelector(".about_nav")
 let about = document.querySelector(".about")
 let services = document.querySelectorAll(".service")
 let packages = document.querySelectorAll(".package")
+let links = document.querySelectorAll(".link")
 
 let packagesPage = document.querySelector(".packages")
 let packagesList = packagesPage.querySelectorAll(".package")
@@ -125,6 +126,7 @@ function expandServices(service){
     more.addEventListener("click", function(){
         service.classList.add("service_open")
         serviceList.classList.add("open")
+        serviceDesc.querySelector(".service_desc_text").style.overflow = "visible"
         more.remove()
 
         services.forEach(service_to_be_hidden => {
@@ -140,6 +142,7 @@ function expandServices(service){
         serviceDesc.appendChild(more)
         service.classList.remove("service_open")
         serviceList.classList.remove("open")
+        serviceDesc.querySelector(".service_desc_text").style.overflow = "hidden"
 
         services.forEach(service_to_be_hidden => {
             service_to_be_hidden.querySelector(".service_title").classList.remove("hidden")
