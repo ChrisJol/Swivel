@@ -2,9 +2,10 @@
     <head>
         <title>Swivel</title>
         <meta name="viewport" content="width=device-width, height=device-height">
-        <link rel="stylesheet" href="css/min.css"> 
-        <link rel="stylesheet" media="screen and (min-width: 801px)" href="css/med.css">
-        <link rel="stylesheet" media="screen and (min-width: 1153px)" href="css/max.css">
+        <link rel="stylesheet" href="css/minified.css"> 
+        <!-- <link rel="stylesheet" href="css/min.css"> 
+        <link rel="stylesheet" href="css/med.css">
+        <link rel="stylesheet" href="css/max.css">  -->
     </head>
     <body>
         <div class="page splash">
@@ -22,8 +23,7 @@
                 </div>
             </div>
         </div>
-        <div class="page about">
-            <a class="anchor" id="about"></a>
+        <div class="page about" id="about">
             <div class="nav about_nav">
                 <div class="nav_wrap">
                     <div class="hamburger about_menu">
@@ -31,12 +31,13 @@
                         <div class="line"></div>
                         <div class="line"></div>
                     </div>
-                    <a href="#about" class="nav_link link">About</a>
-                    <a href="#pricing" class="nav_link link">Pricing</a>
-                    <a href="#services" class="nav_link link">Services</a>
-                    <a href="#aboutme" class="nav_link link">Me</a>
-                    <a href="#contact" class="nav_link link">Contact</a>
-                    <div class="nav_load-bar"></div>
+                    <div class="nav_links">
+                        <a href="#about" class="nav_link link">About</a>
+                        <a href="#pricing" class="nav_link link">Pricing</a>
+                        <a href="#services" class="nav_link link">Services</a>
+                        <a href="#aboutme" class="nav_link link">Me</a>
+                        <a href="#contact" class="nav_link link">Contact</a>
+                    </div>
                 </div>
             </div>
             <div class="wrapper about_wrap">
@@ -59,7 +60,7 @@
                             <p class="package_price">from $200/mo</p>
                         </div>
                         <div class="package_wrap">
-                            <p class="package_desc_summary">With a custom package you choose what you want and I can create a plan based off your selections. If there's a service that you're looking for that I don't offer, we can discuss the possibility of adding it.</p>
+                            <p class="package_desc_summary">With a custom package you choose what you want and I can create a plan based off your selections. If there is a service not listed please ask and I will do my best to accommodate.</p>
                         </div>
                         <a href="#services" class="package_button">More info</a>
                         <div class="package_arrows">
@@ -197,8 +198,8 @@
             <div class="wrapper aboutme_wrap">
                 <div class="aboutme_content">
                     <h1 class="header aboutme_header">About Me</h1>
-                    <p class="aboutme_text">Hi there, I’m Judy. I left my career as an executive assistant helping businesses thrive and succeed and started my own business helping entrepreneurs build theirs.  Through cultivating an efficient working environment, I help business leaders focus on their goals. I enjoy taking the crazy out of everyday life and turning it into pure bliss. My passion is to help my clients achieve their mission. </p>
-                    <p class="aboutme_text">When I’m not working I enjoy traveling, cooking and spending time with my family.</p>
+                    <p class="aboutme_text">Hi there, I&#39;m Judy. As an executive assistant I help entrepreneurs thrive and succeed, after years of experience I started my own business to better help people build theirs. Through cultivating an efficient working environment, I help business leaders focus on their goals. I enjoy taking the crazy out of everyday life and turning it into pure bliss. My passion is to help my clients achieve their mission. </p>
+                    <p class="aboutme_text">When I&#39;m not working I enjoy traveling, cooking and spending time with my family.</p>
                     <img class="signature" src="img/aboutme/Signature.png">
                 </div>
             </div>
@@ -212,10 +213,10 @@
                     <p class="contact_info">Judy Jol - Owner/CEO</p>
                     <p class="contact_info">858-775-1193</p>
                     <p class="contact_info">1140 Wall St. #737 La Jolla CA 92038</p>
-                    <p class="contact_info" >Swivelgal88@gmail.com</p>
+                    <a class="contact_info email"  href="mailto:Swivelgal88@gmail.com" >Swivelgal88@gmail.com</p>
                 </div>
             </div>
         </div>
-        <script src="js/script.js"></script>
+        <script src="js/minified.js"></script>
     </body>
 </html>

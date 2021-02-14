@@ -1,25 +1,19 @@
-let pages = document.querySelectorAll(".page")
-let nav = document.querySelector(".about_nav")
-let about = document.querySelector(".about")
-let services = document.querySelectorAll(".service")
-let packages = document.querySelectorAll(".package")
-let links = document.querySelectorAll(".link")
-
-let packagesPage = document.querySelector(".packages")
-let packagesList = packagesPage.querySelectorAll(".package")
-let packageBtnLeft = packagesPage.querySelectorAll(".arrow-left")
-let packageBtnRight = packagesPage.querySelectorAll(".arrow-right")
-let packagesHeader = packagesPage.querySelector(".packages_header")
-let packagesText = packagesPage.querySelector(".packages_text")
-
-let yOffset = window.pageYOffset
-let media = window.matchMedia("(max-width: 800px)")
+let nav = document.querySelector(".about_nav"),
+    navLinks = nav.querySelector(".nav_links"),
+    navBurger = nav.querySelector(".hamburger"),
+    lines = navBurger.querySelectorAll(".line"),
+    about = document.querySelector(".about"),
+    services = document.querySelectorAll(".service"),
+    packages = document.querySelectorAll(".package"),
+    packagesPage = document.querySelector(".packages"),
+    yOffset = window.pageYOffset,
+    media = window.matchMedia("(max-width: 800px)")
 
 
 /*
  *  PAGE LOAD FUNCTION CALLS
  */
-setNavPosition(yOffset)
+setNavPosition()
 mediaMatched(media)
 
 /*
@@ -33,22 +27,51 @@ media.addListener(mediaMatched)
 document.addEventListener("scroll", function(){
     yOffset = window.pageYOffset //read screen's current y position
     setNavPosition(yOffset)
+
+    if(media.matches){
+        closeNav()
+    }
 })
 
 //touch events for all services
 services.forEach(service => expandServices(service))
 
+//click events for all packages
+packages.forEach(packageElement => packageButtonClicked(packageElement))
 
-if(!media.matches)
-{
-    for(let i = 0; i < packageBtnLeft.length; i++)
-{
-    packageBtnLeft[i].addEventListener("click", function(){
-        let offset = parseFloat(packagesList[0].style.transform.replace(/[^0-9\-.,]/g, ''))
+navBurger.addEventListener("click", function(){
+    if(media.matches)
+    {
+        if(nav.classList.contains("nav_opened")) closeNav()
+        else openNav()
+    }
+})
 
-        if(!offset) offset = 0
+/*
+ * FUNCTIONS
+ */
+ function openNav(){
+    nav.classList.add("nav_opened")
+    navLinks.classList.add("nav-links_opened")
+    lines.forEach(line => line.classList.add("lines_opened"))
+ }
 
-        if(offset == 0) //premium
+ function closeNav(){
+    nav.classList.remove("nav_opened")
+    navLinks.classList.remove("nav-links_opened")
+    lines.forEach(line => line.classList.remove("lines_opened"))
+ }
+
+ function packageButtonClicked(packageElement){
+    let packageBtnLeft = packageElement.querySelector(".arrow-left")
+    let packageBtnRight = packageElement.querySelector(".arrow-right")
+
+    packageBtnLeft.addEventListener("click", function(){
+        let offset = parseFloat(packages[0].style.transform.replace(/[^0-9\-.,]/g, ''))
+     
+        if (!offset) offset = 0
+
+        if(offset === 0) //premium
         {
             offset = -45
 
@@ -56,7 +79,7 @@ if(!media.matches)
             packagesPage.classList.remove("basic_selected")
             packagesPage.classList.add("premium_selected")
         }
-        else if(offset == -22.5) //custom
+        else if(offset === -22.5) //custom
         {
             offset = offset + 22.5
 
@@ -64,7 +87,7 @@ if(!media.matches)
             packagesPage.classList.remove("premium_selected")
             packagesPage.classList.add("custom_selected")
         }
-        else if(offset == -45) //basic
+        else if(offset === -45) //basic
         {
             offset = offset + 22.5
             
@@ -73,16 +96,16 @@ if(!media.matches)
             packagesPage.classList.add("basic_selected")
 
         }
-   
-        for(let j = 0; j < packagesList.length; j++) packagesList[j].style.transform = `translateX(${offset}rem)`
+
+        for(let j = 0; j < packages.length; j++) packages[j].style.transform = `translateX(${offset}rem)`
     })
 
-    packageBtnRight[i].addEventListener("click", function(){
-        let offset = parseFloat(packagesList[0].style.transform.replace(/[^0-9\-.,]/g, ''))
-
+    packageBtnRight.addEventListener("click", function(){
+        let offset = parseFloat(packages[0].style.transform.replace(/[^0-9\-.,]/g, ''))
+     
         if (!offset) offset = 0
 
-        if(offset == -45) //custom
+        if(offset === -45) //custom
         {
             offset = 0
 
@@ -90,7 +113,7 @@ if(!media.matches)
             packagesPage.classList.remove("premium_selected")
             packagesPage.classList.add("custom_selected")
         }
-        else if(offset == -22.5) //premium
+        else if(offset === -22.5) //premium
         {
             offset = offset - 22.5
 
@@ -98,7 +121,7 @@ if(!media.matches)
             packagesPage.classList.remove("basic_selected")
             packagesPage.classList.add("premium_selected")
         }
-        else if(offset == 0) //basic
+        else if(offset === 0) //basic
         {
             offset = offset - 22.5
 
@@ -107,15 +130,9 @@ if(!media.matches)
             packagesPage.classList.add("basic_selected")
         }
     
-        for(let j = 0; j < packagesList.length; j++) packagesList[j].style.transform = `translateX(${offset}rem)`
+        for(let j = 0; j < packages.length; j++) packages[j].style.transform = `translateX(${offset}rem)`
     })
-}
-}
-
-
-/*
- * FUNCTIONS
- */
+ }
 
 function expandServices(service){
     let more = service.querySelector(".more")
@@ -159,22 +176,19 @@ function mediaMatched(mediaQuery){
     if(yOffset >= aboutPage.offsetTop && !mediaQuery.matches)
     {
         nav.classList.add("fixed")
-        nav.classList.remove("bottom")
     }
 }
 
 //set whether nav is fixed or absolutely positioned based on scroll position
-function setNavPosition(yOffset){
+function setNavPosition(){
     let fixed = nav.classList.contains("fixed")
 
     if(yOffset >= about.offsetTop && !fixed)
     {
-        nav.classList.remove("bottom")
         nav.classList.add("fixed")
     }
     else if(yOffset < about.offsetTop && fixed)
     {
         nav.classList.remove("fixed")
-        nav.classList.remove("bottom")
     }
 }
