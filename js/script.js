@@ -9,6 +9,8 @@ let nav = document.querySelector(".about_nav"),
     yOffset = window.pageYOffset,
     media = window.matchMedia("(max-width: 800px)")
 
+const packageOffset = 22.5;
+
 
 /*
  *  PAGE LOAD FUNCTION CALLS
@@ -73,23 +75,23 @@ navBurger.addEventListener("click", function(){
 
         if(offset === 0) //premium
         {
-            offset = -45
+            offset = -(packageOffset * 2);
 
             packagesPage.classList.remove("custom_selected")
             packagesPage.classList.remove("basic_selected")
             packagesPage.classList.add("premium_selected")
         }
-        else if(offset === -22.5) //custom
+        else if(offset === -packageOffset) //custom
         {
-            offset = offset + 22.5
+            offset = offset + packageOffset;
 
             packagesPage.classList.remove("basic_selected")
             packagesPage.classList.remove("premium_selected")
             packagesPage.classList.add("custom_selected")
         }
-        else if(offset === -45) //basic
+        else if(offset === -(packageOffset * 2)) //basic
         {
-            offset = offset + 22.5
+            offset = offset + packageOffset;
             
             packagesPage.classList.remove("premium_selected")
             packagesPage.classList.remove("custom_selected")
@@ -105,7 +107,7 @@ navBurger.addEventListener("click", function(){
      
         if (!offset) offset = 0
 
-        if(offset === -45) //custom
+        if(offset === -(packageOffset * 2)) //custom
         {
             offset = 0
 
@@ -113,9 +115,9 @@ navBurger.addEventListener("click", function(){
             packagesPage.classList.remove("premium_selected")
             packagesPage.classList.add("custom_selected")
         }
-        else if(offset === -22.5) //premium
+        else if(offset === -packageOffset) //premium
         {
-            offset = offset - 22.5
+            offset = offset - packageOffset;
 
             packagesPage.classList.remove("custom_selected")
             packagesPage.classList.remove("basic_selected")
@@ -123,7 +125,7 @@ navBurger.addEventListener("click", function(){
         }
         else if(offset === 0) //basic
         {
-            offset = offset - 22.5
+            offset = offset - packageOffset;
 
             packagesPage.classList.remove("premium_selected")
             packagesPage.classList.remove("custom_selected")
@@ -140,32 +142,36 @@ function expandServices(service){
     let serviceList = service.querySelector(".service_list")
     let serviceDesc = service.querySelector(".service_desc")
 
-    more.addEventListener("click", function(){
-        service.classList.add("service_open")
-        serviceList.classList.add("open")
-        serviceDesc.querySelector(".service_desc_text").style.overflow = "visible"
-        more.remove()
-
-        services.forEach(service_to_be_hidden => {
-            if(!service_to_be_hidden.querySelector(".service_list").classList.contains("open"))
-            {
-                service_to_be_hidden.querySelector(".service_title").classList.add("hidden")
-                service_to_be_hidden.querySelector(".service_desc").classList.add("hidden")
-            }
+    if(more){
+        more.addEventListener("click", function(){
+            service.classList.add("service_open")
+            serviceList.classList.add("open")
+            serviceDesc.querySelector(".service_desc_text").style.overflow = "visible"
+            more.remove()
+    
+            services.forEach(service_to_be_hidden => {
+                if(!service_to_be_hidden.querySelector(".service_list").classList.contains("open"))
+                {
+                    service_to_be_hidden.querySelector(".service_title").classList.add("hidden")
+                    service_to_be_hidden.querySelector(".service_desc").classList.add("hidden")
+                }
+            })
         })
-    })
-
-    less.addEventListener("click", function(){
-        serviceDesc.appendChild(more)
-        service.classList.remove("service_open")
-        serviceList.classList.remove("open")
-        serviceDesc.querySelector(".service_desc_text").style.overflow = "hidden"
-
-        services.forEach(service_to_be_hidden => {
-            service_to_be_hidden.querySelector(".service_title").classList.remove("hidden")
-            service_to_be_hidden.querySelector(".service_desc").classList.remove("hidden")
+    }
+    
+    if(less){
+        less.addEventListener("click", function(){
+            serviceDesc.appendChild(more)
+            service.classList.remove("service_open")
+            serviceList.classList.remove("open")
+            serviceDesc.querySelector(".service_desc_text").style.overflow = "hidden"
+    
+            services.forEach(service_to_be_hidden => {
+                service_to_be_hidden.querySelector(".service_title").classList.remove("hidden")
+                service_to_be_hidden.querySelector(".service_desc").classList.remove("hidden")
+            })
         })
-    })
+    }
 }
 
 //set nav position on screen size change
