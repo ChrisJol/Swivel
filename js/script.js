@@ -9,7 +9,8 @@ let nav = document.querySelector(".about_nav"),
     yOffset = window.pageYOffset,
     media = window.matchMedia("(max-width: 800px)")
 
-const packageOffset = 22.5;
+let gridGap = .5;
+    packageOffset = (packages[0].offsetWidth / 16) + gridGap;
 
 
 /*
@@ -178,6 +179,7 @@ function expandServices(service){
 function mediaMatched(mediaQuery){
     let aboutPage = document.querySelector(".about")
     yOffset = window.pageYOffset
+    // packageOffset = packages[0].offsetWidth + gridGap;
 
     if(yOffset >= aboutPage.offsetTop && !mediaQuery.matches)
     {

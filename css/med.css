@@ -2,6 +2,7 @@
     :root{
         --display_size: 4rem;
         --nav_size: 1.05rem;
+        --header_size: 2rem;
     }
     
     body::after{
@@ -65,7 +66,7 @@
         color: var(--grey);
     }
     .nav_link:hover{
-        color: var(--blue);
+        color: var(--green);
     }
     
     .header{
@@ -74,14 +75,11 @@
     }
     
     a{
-        border-bottom: .5px solid var(--blue);
+        border-bottom: .5px solid var(--green);
     }
 
     .anchor{
-        display: block;
-        position: absolute;
         top: -3.625rem;
-        visibility: hidden;
     }
     
     /*************************************************************************************************** SPLASH PAGE */
@@ -120,31 +118,11 @@
         box-shadow: none;
     }
     .welcome_header{
-        justify-content: flex-end;
-        align-items: flex-start;
-        text-align: left;
-    
         height: auto;
     }
     
     .welcome_header h1{
-        justify-self: flex-start;
-        display: inline-block;
-        justify-content: flex-start;
-        align-items: flex-start;
-    
-        letter-spacing: .1rem;
         line-height: 4.5rem;
-        margin-bottom: 1rem;
-    }
-    .welcome_header h2{
-        display: inline;
-    
-        font-family: var(--body_font);
-        font-size: var(--header_size);
-        line-height: 1.5rem;
-    
-        margin: 0;
     }
     .welcome_text{
         display: inline-block;
@@ -166,9 +144,9 @@
         font-family: var(--body_font);
         font-size: var(--body_size);
         text-align: left;
-        color: var(--blue);
+        color: var(--green);
     
-        border-bottom: .3px solid var(--blue);
+        border-bottom: .3px solid var(--green);
         cursor: pointer;
     }
     .welcome_logo{
@@ -230,28 +208,15 @@
         grid-gap: .5rem;
         
         width: 22rem;
-        overflow: hidden;
+        margin-top: 0;
     }
     
     .package{
-        position: static;
-        top: auto;
-    
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 4fr .6fr;
-        grid-gap: 1rem;
-    
-        height: auto;
         max-height: 27.5rem;
-        width: 22rem;
         padding: 1rem 2rem 2rem 2rem;
     
         background: none;
         border: 1px solid var(--grey);
-    
-        cursor: auto;
-        transform: translateX(0rem);
     }
     .basic, .premium{
         border: none;
@@ -259,79 +224,30 @@
     }
     
     .package_header{
-        align-items: flex-end;
-        grid-column: span 2;
-    
         padding: 1rem 0;
-        border-bottom: 1px solid var(--grey);
-    
-        cursor: auto;
-    }
-    .package_title{
-        margin: 0;
-        line-height: 2rem;
-    }
-    .package_price{
-        color: var(--grey);
-        font-size: var(--body_size);
-        margin: 0;
     }
     
-    .package_wrap{
-        grid-column: span 2;
-    }
     .package_desc{
         max-height: 100rem;
         overflow: hidden;
     }
-    .package_desc_summary{
-        color: var(--grey);
-        margin: 0 0 .5rem 0;
-        line-height: 2rem;
-    }
-    .package_desc_text{
-        margin: 0;
-        line-height: 2.2rem;
-    }
-    .package_desc_text::before {
-        content: "- ";
-    }
+
     .package_button{
         display: inline;
     
         font-family: var(--body_font);
         font-size: var(--body_size);
-        color: var(--blue);
+        color: var(--green);
         line-height: 2rem;
     
         width: max-content;
         padding: .5rem .5rem 0 0;
     
-        border-bottom: .3px solid var(--blue);
+        border-bottom: .3px solid var(--green);
         cursor: pointer;
     }
     
-    .package_arrows{
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-    }
-    .arrow-left, .arrow-right{
-        height: 0;
-        width: 0;
-        margin: .5rem;
     
-        border-top: .7rem solid transparent;
-        border-bottom: .7rem solid transparent;
-    
-        cursor: pointer;
-    }
-    .arrow-left{
-        border-right: .8rem solid var(--grey);
-    }
-    .arrow-right{
-        border-left: .8rem solid var(--grey);
-    }
     
     .custom_selected{
         background-image: url(../img/packages/desktop/custom.jpg)
@@ -462,7 +378,7 @@
     
         font-family: var(--body_font);
         font-size: 1rem;
-        color: var(--blue);
+        color: var(--green);
         line-height: 1.3rem;
         
         cursor: pointer;
@@ -472,7 +388,7 @@
         display: block;
         margin-left: 10px;
         width: 100%;
-        border-bottom: .5px solid var(--blue);
+        border-bottom: .5px solid var(--green);
     }
     
     /**************************************************************************************************** ABOUTME PAGE */

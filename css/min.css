@@ -4,17 +4,17 @@
 
 :root{
     --brick_red: #C97256;
-    --blue: rgb(60, 151, 204);
+    --green: rgb(42, 180, 83);
     --white: rgb(242, 242, 242);
-    --white_transparent: rgba(242,242,242,.95);
+    --white_transparent: rgba(242,242,242,.85);
     --grey: rgb(82, 82, 82);
     --light_grey: rgb(231, 231, 231);
 
     --display_font: "Quicksand-Medium";
     --body_font: "Quicksand-Light";
 
-    --display_size: 3rem;
-    --header_size: 2rem;
+    --display_size: 3.5rem;
+    --header_size: 1.75rem;
     --subheader_size: 1.5rem;
     --nav_size: 1.5rem;
     --body_size: 1.2rem;
@@ -63,7 +63,7 @@ body{
 
     width: 100%;
     max-width: 35rem;
-    padding: 4rem 2rem 4rem 2rem;
+    padding: 1rem 2rem;
 }
 
 .nav{
@@ -87,10 +87,11 @@ body{
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     width: 100%;
     max-width: 35rem;
-    padding: 2rem 0 1rem 2rem;
+    padding: 1rem 2rem;
 }
 .nav_links{
     display: flex;
@@ -127,23 +128,30 @@ body{
     min-width: 1.5rem;
     height: 1.5rem;
 
-    margin: 0 0 .5rem 0;
+    margin: 0;
 }
 .line{
     width: 100%;
     height: .25rem;
     border-radius: 5px;
-    background-color: var(--blue);
+    background-color: var(--green);
     transition: .2s;
 }
 
 a{
     text-decoration: none;
-    color: var(--blue);
+    color: var(--green);
 }
 a:visited{
     text-decoration: none;
-    color: var(--blue);
+    color: var(--green);
+}
+
+.anchor{
+    display: block;
+    position: absolute;
+    top: -4rem;
+    visibility: hidden;
 }
 
 .header{
@@ -162,22 +170,20 @@ a:visited{
 .splash_wrap{
     height: 100%;
     max-height: 40rem;
+
+    padding: 4rem 2rem;
 }
 
 .welcome_box{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 
     height: 100%;
     width: 100%;
     max-height: 40rem;
-    padding: 5rem 2rem;
-
-    background: rgb(242,242,242);
-    background: linear-gradient(45deg, rgba(242,242,242,1) 0%, rgba(242,242,242,0.75) 100%);
-    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
+    padding: 1rem 0 0 0;
 
     color: var(--grey);
     text-align: center;
@@ -185,26 +191,35 @@ a:visited{
 .welcome_header{
     display:flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
 
-    height: 15rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+
+    height: 30rem;
     width: 100%;
 }
 .welcome_header h1{
     font-family: var(--display_font);
     font-size: var(--display_size);
     line-height: 4rem;
-    letter-spacing: .4rem;
+    letter-spacing: .1rem;
 
     border-bottom: 1px solid var(--grey);
 
     margin: 0;
+    margin-bottom: 1rem;
 }
 .welcome_header h2{
-    display: none;
+    display: inline;
+    line-height: 1.5rem;
+
+    margin: 0;
+
+    font-family: var(--body_font);
+    font-size: var(--header_size);
 }
-.welcome_text, .welcome_text_mobile{
+.welcome_text{
     font-family: var(--body_font);
     font-size: var(--body_size);
     line-height: 2;
@@ -228,6 +243,11 @@ a:visited{
 .about{
     color: var(--grey);
 }
+
+.about_wrap{
+    padding-top: 4rem;
+}
+
 .about_body{
     font-family: var(--body_font);
     line-height: 2.2em;
@@ -240,6 +260,11 @@ a:visited{
 
 .packages{
     background-color: var(--white);
+    background-image: url(../img/packages/mobile/packages.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     overflow: hidden;
 }
 
@@ -260,43 +285,65 @@ a:visited{
 
 .package_list{
     display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 1rem;
+    grid-template-columns: repeat(3, clamp(18rem, 100%, 22rem));
+    grid-gap: .5rem;
+
+    overflow: hidden;
+    max-width: 22rem;
+
+    margin-top: 3rem;
 }
 
 .package{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 4fr .6fr;
+    grid-gap: 1rem;
+
     width: 100%;
 
     border-radius: 3px;
-    padding: .5rem 1rem;
+    padding: .5rem 1rem 2rem 1rem;
 
     z-index: 100;
-    transition: .2s;
-    cursor: pointer;
 
-    border: 1px solid var(--grey);
+    transition: .2s;
+
+    background-color: var(--white_transparent);
 }
 .package_header{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+
+    grid-column: span 2;
 
     width: 100%;
     height: 4rem;
     padding: 1rem .5rem 1rem 0;
-    
-    cursor: pointer;
+
+    transform: translateX(0rem);
+    transition: .2s;
+
+    border-bottom: 1px solid var(--grey);
 }
 .package_title{
     font-family: var(--body_font);
     font-size: var(--subheader_size);
     color: var(--grey);
     line-height: .5rem;
+
+    margin: 0;
+    line-height: 2rem;
 }
 .package_price{
     font-family: var(--body_font);
     font-size: var(--body_size);
     color: var(--grey);
+    margin: 0;
+}
+.package_wrap{
+    grid-column: span 2;
 }
 .package_desc{
     list-style-type: none;
@@ -304,11 +351,12 @@ a:visited{
     margin-left: 1rem;
 
     overflow: hidden;
-
-    transition: .3s;
-    transition-timing-function: ease-in-out;
 }
 
+.package_desc_summary{
+    color: var(--grey);
+    margin: 0 0 .5rem 0;
+}
 .package_desc_text{
     margin: 0;
 }
@@ -319,10 +367,43 @@ a:visited{
     color: var(--grey);
     font-family: var(--body_font);
     font-size: var(--body_size);
-    line-height: 2.7rem;
+    line-height: 2.2rem;
 }
 .package_button{
-    display: none;
+    display: inline;
+    
+    font-family: var(--body_font);
+    font-size: var(--body_size);
+    color: var(--green);
+    line-height: 2rem;
+
+    width: max-content;
+    padding: .5rem .5rem 0 0;
+
+    border-bottom: .3px solid var(--green);
+    cursor: pointer;
+}
+
+.package_arrows{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.arrow-left, .arrow-right{
+    height: 0;
+    width: 0;
+    margin: .5rem;
+
+    border-top: .7rem solid transparent;
+    border-bottom: .7rem solid transparent;
+
+    cursor: pointer;
+}
+.arrow-left{
+    border-right: .8rem solid var(--grey);
+}
+.arrow-right{
+    border-left: .8rem solid var(--grey);
 }
 
 /*************************************************************************************************** SERVICES PAGE */
@@ -400,7 +481,7 @@ a:visited{
 }
 
 .email{
-    color: var(--blue);
+    color: var(--green);
 }
 
 
@@ -413,7 +494,7 @@ a:visited{
 }
 
 .nav_opened{
-    background-color: var(--blue);
+    background-color: var(--green);
 }
 .nav-links_opened{
     height: 254px;
