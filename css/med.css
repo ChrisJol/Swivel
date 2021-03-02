@@ -22,7 +22,7 @@
     /*************************************************************************************************** DEFAULT STYLES */
     .wrapper{
         max-width: 65rem;
-        padding: 3rem;
+        padding: 3rem 3rem 3rem 3rem;
     }
     
     .hamburger{
@@ -71,7 +71,7 @@
     
     .header{
         margin: 0 0 1rem 0;
-        line-height: 2rem;
+        line-height: var(--line_height);
     }
     
     a{
@@ -164,10 +164,6 @@
         min-height: 35rem;
     }
     
-    .about_wrap{
-        margin: 3rem 0;
-    }
-    
     .about_body{
         padding-top: 0;
         /* max-width: 47rem;  */
@@ -238,7 +234,7 @@
         font-family: var(--body_font);
         font-size: var(--body_size);
         color: var(--green);
-        line-height: 2rem;
+        line-height: var(--line_height);
     
         width: max-content;
         padding: .5rem .5rem 0 0;
@@ -275,13 +271,10 @@
     
         background-image: url(../img/services/services.jpg);
         background-size: cover;
+        background-position: left center;
         background-repeat: no-repeat;
     
         height: 800px;
-    }
-    
-    .services_nav{
-        display: none;
     }
     
     .services_header{
@@ -291,7 +284,6 @@
         margin-left: 18rem;
     }
     .services_text{
-        font-size: var(--body_size);
         margin: 0 0 0 18rem;
     }
     
@@ -311,65 +303,44 @@
         height: 100%;
         width: 100%;
         padding: 1rem 0;
-    
-        background: none;
-        border-radius: 0;
-    
-        overflow: hidden;
-        transition: .3s;
+
+        cursor: auto;
     }
     
     .service_title{
-        line-height: 2rem;
-        color: var(--grey);
-    
         padding: 0;
-        margin: 0;
-        transition: .3s;
+        line-height: var(--line_height);
+    }
+
+    .service_arrow{
+        display: none;
+    }
+
+    .service_desc_text::before {
+        content: "- ";
+        margin-left: 0;
     }
     
     .service_list, .service_desc{
         display: flex;
         flex-direction: column;
     
-        padding: 0;
         margin: 0;
-        
         width: 100%;
-    
-        pointer-events: auto;
     }
     
-    .service_desc{
-        overflow: visible;
-    }
-    
-    .service_list{
-        position: absolute;
-    
-        pointer-events: none;
-        opacity: 0;
-        height: 0;
-    }
-    
-    .service_list_text, .service_desc_text{
+    .service_desc_text{
         font-size: 1rem;
         color: var(--grey);
-        line-height: 2rem;
+        line-height: var(--line_height);
     
         margin: 0;
         margin-left: 10px;
     
         overflow: hidden;
-    }
-    
-    .service_desc_text{
+
         text-overflow: ellipsis;
         white-space: nowrap;
-    }
-    
-    .service_desc_text::before, .service_list_text::before {
-        content: "- ";
     }
     
     .more, .less{
@@ -408,10 +379,6 @@
     .aboutme_header{
         color: black;
     }
-    .aboutme_text{
-        line-height: 2.2rem;
-        max-width: 30rem;
-    }
     
     /**************************************************************************************************** CONTACT PAGE */
     .contact_wrap{
@@ -439,7 +406,7 @@
     
     .contact_info{
         margin: .5rem;
-        line-height: 2rem;
+        line-height: var(--line_height);
     }
 
     .email{
@@ -448,12 +415,14 @@
     
     
     /*************************************************************************************************** OVERRIDES */
+
     .open{
         height: auto;
         opacity: 1;
         pointer-events: visible;
         overflow: visible;
     }
+
     .service_open{
         grid-column: 1;
         grid-row: 1;
@@ -464,5 +433,7 @@
     .hidden{
         opacity: 0;
         pointer-events: none;
+        display: none;
     }
+    
 }

@@ -37,7 +37,24 @@ document.addEventListener("scroll", function(){
 })
 
 //touch events for all services
-services.forEach(service => expandServices(service))
+services.forEach(service => {
+    let serviceTitle = service.querySelector(".service_title_wrap")
+    let less = service.querySelector(".less")
+    let more = service.querySelector(".more")
+
+    serviceTitle.addEventListener("click", function(){
+        toggleService(service)
+    })
+    less.addEventListener("click", function(){
+        toggleService(service)
+    })
+
+    if(more){
+        more.addEventListener("click", function(){
+            toggleService(service)
+        })
+    }
+})
 
 //click events for all packages
 packages.forEach(packageElement => packageButtonClicked(packageElement))
@@ -137,49 +154,44 @@ navBurger.addEventListener("click", function(){
     })
  }
 
-function expandServices(service){
-    let more = service.querySelector(".more")
-    let less = service.querySelector(".less")
+function toggleService(service){
     let serviceList = service.querySelector(".service_list")
     let serviceDesc = service.querySelector(".service_desc")
+    let serviceArrow = service.querySelector(".service_arrow")
 
-    if(more){
-        more.addEventListener("click", function(){
-            service.classList.add("service_open")
-            serviceList.classList.add("open")
-            serviceDesc.querySelector(".service_desc_text").style.overflow = "visible"
-            more.remove()
+    if(!service.classList.contains("service_open"))
+    {
+        service.classList.add("service_open")
+        serviceDesc.classList.remove("open")
+        serviceList.classList.add("open")
+        serviceArrow.style.transform = "rotate(90deg)"
     
-            services.forEach(service_to_be_hidden => {
-                if(!service_to_be_hidden.querySelector(".service_list").classList.contains("open"))
-                {
-                    service_to_be_hidden.querySelector(".service_title").classList.add("hidden")
-                    service_to_be_hidden.querySelector(".service_desc").classList.add("hidden")
-                }
-            })
+        services.forEach(serviceToHide => {
+            if(serviceToHide !== service){
+                serviceToHide.classList.add("hidden");
+            }
         })
     }
-    
-    if(less){
-        less.addEventListener("click", function(){
-            serviceDesc.appendChild(more)
-            service.classList.remove("service_open")
-            serviceList.classList.remove("open")
-            serviceDesc.querySelector(".service_desc_text").style.overflow = "hidden"
-    
-            services.forEach(service_to_be_hidden => {
-                service_to_be_hidden.querySelector(".service_title").classList.remove("hidden")
-                service_to_be_hidden.querySelector(".service_desc").classList.remove("hidden")
-            })
+    else if(service.classList.contains("service_open"))
+    {
+        service.classList.remove("service_open")
+        serviceDesc.classList.add("open")
+        serviceList.classList.remove("open")
+        serviceArrow.style.transform = "rotate(-90deg)"
+
+        services.forEach(serviceToShow => {
+            if(serviceToShow !== service){
+                serviceToShow.classList.remove("hidden");
+            }
         })
     }
+
 }
 
 //set nav position on screen size change
 function mediaMatched(mediaQuery){
     let aboutPage = document.querySelector(".about")
     yOffset = window.pageYOffset
-    // packageOffset = packages[0].offsetWidth + gridGap;
 
     if(yOffset >= aboutPage.offsetTop && !mediaQuery.matches)
     {
