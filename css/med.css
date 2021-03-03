@@ -211,11 +211,6 @@
         max-height: 27.5rem;
         padding: 1rem 2rem 2rem 2rem;
     
-        background: none;
-        border: 1px solid var(--grey);
-    }
-    .basic, .premium{
-        border: none;
         background-color: var(--white_transparent);
     }
     
@@ -316,9 +311,9 @@
         display: none;
     }
 
-    .service_desc_text::before {
+    .service_desc_text::before, .service_list_text::before {
         content: "- ";
-        margin-left: 0;
+        margin: 0;
     }
     
     .service_list, .service_desc{
@@ -326,19 +321,20 @@
         flex-direction: column;
     
         margin: 0;
+        padding-left: 11px;
         width: 100%;
     }
     
-    .service_desc_text{
+    .service_desc_text, .service_list_text{
         font-size: 1rem;
         color: var(--grey);
         line-height: var(--line_height);
     
         margin: 0;
-        margin-left: 10px;
     
         overflow: hidden;
-
+    }
+    .service_desc_text{
         text-overflow: ellipsis;
         white-space: nowrap;
     }
@@ -379,12 +375,17 @@
     .aboutme_header{
         color: black;
     }
+
+    .signature{
+        width: 9rem;
+    }
     
     /**************************************************************************************************** CONTACT PAGE */
     .contact_wrap{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding-bottom: 3rem;
     }
     
     .contact_img{
